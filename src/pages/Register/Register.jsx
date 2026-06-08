@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import '../style/StyleRegister/Auth.css'; // Apontando para o CSS exclusivo
-import cadastroImg from '../imgs/CadastroImage.png';
-import iconLogo from '../imgs/IconeDado.png';
+import '../../style/StyleRegister/Auth.css'; // Apontando para o CSS exclusivo
+import cadastroImg from '../../imgs/CadastroImage.png';
+import iconLogo from '../../imgs/IconeDado.png';
 
 const Register = () => {
   const navigate = useNavigate();

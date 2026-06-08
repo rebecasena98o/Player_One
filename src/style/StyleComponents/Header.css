@@ -1,0 +1,185 @@
+/* src/style/Header.css */
+
+/* --- CONTAINER MESTRE DO HEADER --- */
+.main-header {
+  background-color: var(--background, #ffffff);
+  padding: 12px 0;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.01);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.header-content {
+  width: 92%;
+  max-width: 1300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Distribuição matemática exata em 3 blocos */
+.header-section {
+  display: flex;
+  align-items: center;
+}
+
+.header-section.left {
+  flex: 1;
+  justify-content: flex-start;
+}
+
+.header-section.center {
+  flex: 2;
+  justify-content: center;
+  padding: 0 16px;
+}
+
+.header-section.right {
+  flex: 1;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+/* --- DESIGN DA LOGO (ESQUERDA) --- */
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo-icon-box {
+  background-color: var(--input-background, #f3f3f5);
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md, 8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  transition: transform 0.2s ease;
+}
+
+.logo-link:hover .logo-icon-box {
+  transform: scale(1.03);
+}
+
+.logo-img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.logo-text {
+  font-family: 'Playfair Display', Georgia, serif; /* Fonte de alta classe idêntica à imagem */
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: -0.2px;
+  color: var(--primary, #030213);
+}
+
+/* --- DESIGN DA BARRA DE PESQUISA (CENTRO) --- */
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  background-color: var(--input-background, #f3f3f5);
+  width: 100%;
+  max-width: 520px; /* Largura esticada elegante */
+  padding: 9px 14px;
+  border-radius: var(--radius-lg, 10px);
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+/* Efeito sutil ao clicar para digitar */
+.search-bar-container:focus-within {
+  border-color: rgba(0, 0, 0, 0.12);
+  background-color: var(--background);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.search-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--muted-foreground, #717182);
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.search-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  color: var(--foreground);
+}
+
+.search-input::placeholder {
+  color: var(--muted-foreground);
+  opacity: 0.8;
+}
+
+/* --- DESIGN DOS BOTÕES (DIREITA) --- */
+.header-icon-btn, .theme-toggle-btn {
+  background: none;
+  border: none;
+  color: var(--foreground);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.header-icon-btn:hover, .theme-toggle-btn:hover {
+  background-color: var(--input-background);
+}
+
+.svg-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Controle da bolinha vermelha de notificação */
+.icon-wrapper {
+  position: relative;
+  display: flex;
+}
+
+.notification-dot {
+  position: absolute;
+  top: 1px;
+  right: 2px;
+  width: 7px;
+  height: 7px;
+  background-color: #ef4444; /* Vermelho vivo idêntico ao protótipo */
+  border-radius: 50%;
+  border: 1.5px solid var(--background); /* Cria o anel de corte em volta do ponto */
+}
+
+/* --- ADAPTABILIDADE AO SEU DARK MODE NATIVO --- */
+.dark .main-header {
+  background-color: var(--card);
+}
+
+.dark .logo-text {
+  color: var(--foreground);
+}
+
+.dark .search-bar-container:focus-within {
+  border-color: var(--border);
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.dark .notification-dot {
+  border-color: var(--card);
+}

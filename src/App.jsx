@@ -1,14 +1,10 @@
-// src/App.jsx
-import Login from './components/Login';
-import Register from './components/Register';
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
-  
   return (
-    <div className="App">
-      <Login />
-    </div>
+    <AppRoutes/>
   );
 }
+
 
 export default App;

@@ -1,0 +1,475 @@
+.manage-games-layout {
+  min-height: 100vh;
+  background-color: #fafafa;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #1f2937;
+}
+
+
+.mg-top-navbar {
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.mg-navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mg-brand-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mg-back-btn {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 0.375rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease;
+}
+
+.mg-back-btn:hover {
+  background-color: #f3f4f6;
+}
+
+.mg-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #000000;
+}
+
+.mg-page-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: #000000;
+}
+
+.mg-user-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mg-avatar-mini {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.mg-avatar-mini img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mg-add-game-btn {
+  background-color: #09090b;
+  color: #ffffff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  transition: background-color 0.15s ease;
+}
+
+.mg-add-game-btn:hover {
+  background-color: #27272a;
+}
+
+.mg-btn-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+
+.mg-main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.mg-counter-text {
+  font-size: 0.875rem;
+  color: #71717a;
+  margin-bottom: 1.5rem;
+}
+
+.mg-games-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+
+.mg-game-card {
+  background-color: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .mg-game-card {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+
+.mg-card-image-box {
+  width: 100%;
+  height: 160px;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .mg-card-image-box {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.mg-card-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.mg-card-info-box {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mg-card-title-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .mg-card-title-row {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+  }
+}
+
+.mg-game-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  color: #000000;
+}
+
+.mg-tags-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.mg-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.375rem;
+  background-color: #f4f4f5;
+  color: #3f3f46;
+}
+
+.mg-tag-category {
+  background-color: #edf2f7;
+  color: #2b6cb0;
+}
+
+.mg-tag-age {
+  border: 1px solid #e2e8f0;
+  background: transparent;
+  color: #4a5568;
+}
+
+/* Badges de Estado */
+.mg-tag-status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.status-online {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.status-offline {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.mg-status-icon {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+.mg-game-description {
+  font-size: 0.875rem;
+  color: #71717a;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.mg-game-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: auto;
+  font-size: 0.825rem;
+  color: #4b5563;
+}
+
+.mg-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.mg-meta-icon {
+  width: 0.9rem;
+  height: 0.9rem;
+  color: #6b7280;
+}
+
+/* Área de botões de Ação lateral */
+.mg-card-actions-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .mg-card-actions-box {
+    width: auto;
+    flex-direction: row;
+    align-self: flex-start;
+  }
+}
+
+.mg-toggle-status-btn {
+  font-size: 0.825rem;
+  font-weight: 500;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px solid #e4e4e7;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.mg-toggle-status-btn:hover {
+  background-color: #f4f4f5;
+}
+
+.mg-action-icon-btn {
+  border: none;
+  padding: 0.45rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease;
+}
+
+.btn-edit {
+  background-color: #f4f4f5;
+  color: #18181b;
+}
+
+.btn-edit:hover {
+  background-color: #e4e4e7;
+}
+
+.btn-delete {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.btn-delete:hover {
+  background-color: #fca5a5;
+}
+
+.mg-action-icon {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+/* SISTEMA DE MODAIS (Formulários e Deleção) */
+.mg-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.mg-modal-body {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.form-modal-width { width: 90%; max-width: 540px; }
+.delete-modal-width { width: 90%; max-width: 440px; }
+
+.mg-modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #71717a;
+}
+
+.mg-modal-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+  color: #000000;
+}
+
+.text-danger { color: #dc2626; }
+
+.mg-modal-subtitle {
+  font-size: 0.875rem;
+  color: #71717a;
+  margin: 0 0 1.5rem 0;
+}
+
+/* Estruturação interna do Form do Modal */
+.mg-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mg-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.mg-form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #000000;
+}
+
+.mg-form-group input, 
+.mg-form-group select, 
+.mg-form-group textarea {
+  width: 100%;
+  padding: 0.625rem;
+  border: 1px solid #e4e4e7;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  background-color: #fcfcfc;
+  box-sizing: border-box;
+}
+
+.mg-form-group input:focus, 
+.mg-form-group select:focus, 
+.mg-form-group textarea:focus {
+  outline: none;
+  border-color: #000000;
+  background-color: #ffffff;
+}
+
+.mg-form-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Rodapé de botões dos Modais */
+.mg-modal-actions-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.mg-btn-primary {
+  background-color: #09090b;
+  color: #ffffff;
+  border: none;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mg-btn-secondary {
+  background-color: transparent;
+  border: 1px solid #e4e4e7;
+  color: #09090b;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mg-btn-danger {
+  background-color: #dc2626;
+  color: #ffffff;
+  border: none;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mg-btn-primary:hover { background-color: #27272a; }
+.mg-btn-secondary:hover { background-color: #f4f4f5; }
+.mg-btn-danger:hover { background-color: #b91c1c; }

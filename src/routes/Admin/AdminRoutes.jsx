@@ -1,36 +1,26 @@
-import { createBrowserRouter, Navigate } from 'react-router';
-import { ProtectedRoute } from './components/ProtectedRoute';
+// AdminRoutes.jsx
+import { Route } from 'react-router-dom';
+import AdminDashboard from './Dashboard'; 
+import ManageGames from './ManageGames';       
+import AdminProfile from './AdminProfile';     
+import ManageUsers from './ManageUsers';       
+import ManageParties from './ManageParties';   
 
-// Importações do Aluno/Comum
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import Home from './pages/Home';
-import GameDetails from './pages/GameDetails';
-import Parties from './pages/Parties';
-import PartyDetails from './pages/PartyDetails';
-import MyParties from './pages/MyParties';
-import CreateParty from './pages/CreateParty';
-import Profile from './pages/Profile';
+export default function AdminRoutes() {
+  return [
+    // Rota 1: Dashboard Central
+    <Route key="admin-dash" path="/admin/dashboard" element={<AdminDashboard />} />,
 
-// 1. IMPORTAR AS ROTAS DO ADMIN AQUI
-import { adminRoutes } from './routes/AdminRoutes'; 
+    // Rota 2: Gerenciar Jogos
+    <Route key="admin-games" path="/admin/games" element={<ManageGames />} />,
 
-export const router = createBrowserRouter([
-  // --- ROTAS PÚBLICAS DO USUÁRIO/ALUNO ---
-  { path: '/login', Component: Login },
-  { path: '/signup', Component: Signup },
+    // Rota 3: Perfil do Administrador
+    <Route key="admin-profile" path="/admin/profile" element={<AdminProfile />} />,
 
-  // --- ROTAS PROTEGIDAS DO USUÁRIO/ALUNO ---
-  { path: '/', element: <ProtectedRoute><Home /></ProtectedRoute> },
-  { path: '/home', element: <Navigate to="/" replace /> },
-  { path: '/Home', element: <Navigate to="/" replace /> },
-  { path: '/game/:id', element: <ProtectedRoute><GameDetails /></ProtectedRoute> },
-  { path: '/parties', element: <ProtectedRoute><Parties /></ProtectedRoute> },
-  { path: '/parties/:id', element: <ProtectedRoute><PartyDetails /></ProtectedRoute> },
-  { path: '/parties/create', element: <ProtectedRoute><CreateParty /></ProtectedRoute> },
-  { path: '/my-parties', element: <ProtectedRoute><MyParties /></ProtectedRoute> },
-  { path: '/profile', element: <ProtectedRoute><Profile /></ProtectedRoute> },
+    // Rota 4: Gerenciar Usuários
+    <Route key="admin-users" path="/admin/users" element={<ManageUsers />} />,
 
-  // --- 2. INJETAR TODAS AS ROTAS DO ADMIN DE UMA SÓ VEZ ---
-  ...adminRoutes,
-]);
+    // Rota 5: Gerenciar Party's
+    <Route key="admin-parties" path="/admin/parties" element={<ManageParties />} />
+  ];
+}

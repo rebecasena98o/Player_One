@@ -1,208 +1,166 @@
-import { useNavigate } from 'react-router';
-import { useAuth } from '../../context/AuthContext';
-import { motion } from 'motion/react';
-import { games } from '../../data/games';
-import { parties } from '../../data/parties';
-import { users } from '../../data/users';
-import './AdminDashboard.css'; // Importação do CSS Puro
+import './Dashboard.css';
 
 export default function AdminDashboard() {
   const navigate = useNavigate();
-  const { user, logout } = useAuth();
+  const { logout } = useAuth();
 
-  const pendingParties = parties.filter(p => p.status === 'pending').length;
-  const totalUsers = users.filter(u => u.role === 'user').length;
-  const totalGames = games.length;
-  const totalParties = parties.length;
+  // Dados mocados estáticos conforme a imagem do painel administrativo fornecida
+  const stats = {
+    usersActive: 3,
+    gamesRegistered: 8,
+    totalParties: 3,
+    pendingApproval: 2,
+  };
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
-  };
-
-  const getInitials = (name) => {
-    if (!name) return 'AD';
-    return name
-      .split(' ')
-      .map(n => n[0])
-      .join('')
-      .toUpperCase()
-      .slice(0, 2);
+    navigate('/admin/login');
   };
 
   return (
-    <div className="admin-dashboard-container">
-      {/* Cabeçalho / Navbar */}
-      <header className="dashboard-header">
-        <div className="header-container">
-          <div className="header-brand">
+    <div className="admin-dashboard-layout">
+      {/* HEADER PRINCIPAL */}
+      <header className="dashboard-top-navbar">
+        <div className="navbar-container">
+          <div className="brand-section">
             <div className="brand-icon-wrapper">
-              <span className="material-symbols-outlined icon-primary">settings</span>
+              <Settings className="brand-gear-icon" />
             </div>
-            <div className="brand-text">
+            <div>
               <h1 className="brand-title">Painel Administrativo</h1>
-              <p className="brand-subtitle">Bem-vindo, {user?.name}</p>
+              <p className="brand-subtitle">Bem-vindo, Administrador</p>
             </div>
           </div>
 
-          <div className="header-actions">
-            <button 
-              className="avatar-btn" 
-              onClick={() => navigate('/admin/profile')}
-              title="Ver perfil"
-            >
-              <div className="avatar-wrapper">
-                {user?.avatar ? (
-                  <img src={user.avatar} alt={user.name} className="avatar-img" />
-                ) : (
-                  <span className="avatar-fallback">
-                    {getInitials(user?.name)}
-                  </span>
-                )}
-              </div>
-            </button>
-
-            <button className="btn btn-destructive" onClick={handleLogout}>
-              <span className="material-symbols-outlined btn-icon">logout</span>
+          <div className="user-action-section">
+            <div className="admin-avatar-mini">
+              <img 
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" 
+                alt="Admin Avatar" 
+                className="avatar-img"
+              />
+            </div>
+            <Button variant="destructive" onClick={handleLogout} className="top-logout-btn">
+              <LogOut className="btn-icon-left" />
               Sair
-            </button>
+            </Button>
           </div>
         </div>
       </header>
 
-      {/* Conteúdo Principal */}
-      <main className="dashboard-main">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="dashboard-welcome"
-        >
-          <h2 className="welcome-title">Dashboard</h2>
-          <p className="welcome-subtitle">Visão geral do sistema PlayerOne</p>
-        </motion.div>
+      {/* CONTEÚDO PRINCIPAL */}
+      <main className="dashboard-main-content">
+        <div className="content-container">
+          
+          {/* SEÇÃO DE BOAS-VINDAS / TÍTULO DA PÁGINA */}
+          <section className="page-intro-heading">
+            <h2 className="intro-title">Dashboard</h2>
+            <p className="intro-subtitle">Visão geral do sistema PlayerOne</p>
+          </section>
 
-        {/* Grid de Cards Estatísticos */}
-        <div className="stats-grid">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-          >
-            <div className="dashboard-card">
-              <div className="card-header">
-                <h3 className="card-title">
-                  <span className="material-symbols-outlined icon-blue">group</span>
-                  Usuários
-                </h3>
-              </div>
-              <div className="card-content">
-                <p className="stat-number">{totalUsers}</p>
-                <p className="stat-label">Usuários ativos</p>
-              </div>
-            </div>
-          </motion.div>
+          {/* GRID DE CARDS COM INDICADORES MÊTRICOS */}
+          <section className="metrics-summary-grid">
+            
+            {/* Card Usuários */}
+            <Card className="metric-card">
+              <CardContent className="metric-card-body">
+                <div className="metric-icon-title">
+                  <Users className="metric-icon text-blue" />
+                  <span className="metric-label">Usuários</span>
+                </div>
+                <div className="metric-value-box">
+                  <span className="metric-number">{stats.usersActive}</span>
+                  <span className="metric-desc">Usuários ativos</span>
+                </div>
+              </CardContent>
+            </Card>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <div className="dashboard-card">
-              <div className="card-header">
-                <h3 className="card-title">
-                  <span className="material-symbols-outlined icon-green">casino</span>
-                  Jogos
-                </h3>
-              </div>
-              <div className="card-content">
-                <p className="stat-number">{totalGames}</p>
-                <p className="stat-label">Jogos cadastrados</p>
-              </div>
-            </div>
-          </motion.div>
+            {/* Card Jogos */}
+            <Card className="metric-card">
+              <CardContent className="metric-card-body">
+                <div className="metric-icon-title">
+                  <Dices className="metric-icon text-green" />
+                  <span className="metric-label">Jogos</span>
+                </div>
+                <div className="metric-value-box">
+                  <span className="metric-number">{stats.gamesRegistered}</span>
+                  <span className="metric-desc">Jogos cadastrados</span>
+                </div>
+              </CardContent>
+            </Card>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            <div className="dashboard-card">
-              <div className="card-header">
-                <h3 className="card-title">
-                  <span className="material-symbols-outlined icon-purple">calendar_month</span>
-                  Party's
-                </h3>
-              </div>
-              <div className="card-content">
-                <p className="stat-number">{totalParties}</p>
-                <p className="stat-label">Total de party's</p>
-              </div>
-            </div>
-          </motion.div>
+            {/* Card Party's */}
+            <Card className="metric-card">
+              <CardContent className="metric-card-body">
+                <div className="metric-icon-title">
+                  <Calendar className="metric-icon text-purple" />
+                  <span className="metric-label">Party's</span>
+                </div>
+                <div className="metric-value-box">
+                  <span className="metric-number">{stats.totalParties}</span>
+                  <span className="metric-desc">Total de party's</span>
+                </div>
+              </CardContent>
+            </Card>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-          >
-            <div className="dashboard-card card-pending">
-              <div className="card-header">
-                <h3 className="card-title">
-                  <span className="material-symbols-outlined icon-orange">calendar_month</span>
-                  Pendentes
-                </h3>
-              </div>
-              <div className="card-content">
-                <p className="stat-number text-orange">{pendingParties}</p>
-                <p className="stat-label">Party's aguardando aprovação</p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+            {/* Card Pendentes (Destaque Laranja) */}
+            <Card className="metric-card pending-highlight">
+              <CardContent className="metric-card-body">
+                <div className="metric-icon-title">
+                  <Clock className="metric-icon text-orange" />
+                  <span className="metric-label text-orange-dark">Pendentes</span>
+                </div>
+                <div className="metric-value-box">
+                  <span className="metric-number">{stats.pendingApproval}</span>
+                  <span className="metric-desc">Party's aguardando aprovação</span>
+                </div>
+              </CardContent>
+            </Card>
 
-        {/* Seção de Ações Rápidas */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-        >
-          <div className="dashboard-card actions-container-card">
-            <div className="actions-card-header">
-              <h3 className="section-title">Ações Rápidas</h3>
-              <p className="card-description">Gerenciar o sistema PlayerOne</p>
+          </section>
+
+          {/* CONTAINER DE AÇÕES RÁPIDAS */}
+          <section className="quick-actions-panel">
+            <div className="panel-header">
+              <h3 className="panel-title">Ações Rápidas</h3>
+              <p className="panel-subtitle">Gerenciar o sistema PlayerOne</p>
             </div>
-            <div className="actions-grid">
-              <button
-                className="btn-action-outline"
+
+            <div className="actions-button-grid">
+              
+              <button 
+                className="action-tile-btn" 
                 onClick={() => navigate('/admin/games')}
               >
-                <span className="material-symbols-outlined action-icon">casino</span>
-                <span className="action-text">Gerenciar Jogos</span>
+                <Dices className="tile-btn-icon" />
+                <span className="tile-btn-text">Gerenciar Jogos</span>
               </button>
 
-              <button
-                className="btn-action-outline"
+              <button 
+                className="action-tile-btn" 
                 onClick={() => navigate('/admin/users')}
               >
-                <span className="material-symbols-outlined action-icon">group</span>
-                <span className="action-text">Gerenciar Usuários</span>
+                <Users className="tile-btn-icon" />
+                <span className="tile-btn-text">Gerenciar Usuários</span>
               </button>
 
-              <button
-                className="btn-action-outline btn-relative"
+              <button 
+                className="action-tile-btn relative-badge-container" 
                 onClick={() => navigate('/admin/parties')}
               >
-                {pendingParties > 0 && (
-                  <span className="badge-pending">
-                    {pendingParties}
-                  </span>
+                <Calendar className="tile-btn-icon" />
+                <span className="tile-btn-text">Gerenciar Party's</span>
+                {stats.pendingApproval > 0 && (
+                  <div className="tile-notification-badge">
+                    {stats.pendingApproval}
+                  </div>
                 )}
-                <span className="material-symbols-outlined action-icon">calendar_month</span>
-                <span className="action-text">Gerenciar Party's</span>
               </button>
+
             </div>
-          </div>
-        </motion.div>
+          </section>
+
+        </div>
       </main>
     </div>
   );

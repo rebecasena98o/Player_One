@@ -1,134 +1,72 @@
-/* Definição do Escopo de Cores Baseadas no Padrão Shadcn (Variáveis Modernas) */
-:root {
-  --bg-background: #ffffff;
-  --text-foreground: #0f172a;
-  --text-muted: #64748b;
-  --border-color: #e2e8f0;
-  
-  --primary-color: #2563eb;
-  --primary-light: #eff6ff;
-  --destructive-color: #ef4444;
-  --destructive-hover: #dc2626;
-
-  /* Cores dos Ícones */
-  --blue-color: #3b82f6;
-  --green-color: #22c55e;
-  --purple-color: #a855f7;
-  --orange-color: #f97316;
-  --orange-border: #fed7aa;
-  --orange-bg: #fff7ed;
-
-  --card-bg: #ffffff;
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-  --radius-lg: 0.5rem;
-  --radius-md: 0.375rem;
-}
-
-/* Suporte Automático ao Modo Escuro (Dark Mode) */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-background: #09090b;
-    --text-foreground: #f4f4f5;
-    --text-muted: #a1a1aa;
-    --border-color: #27272a;
-    --card-bg: #09090b;
-    --primary-color: #3b82f6;
-    --primary-light: rgba(59, 130, 246, 0.1);
-    --orange-bg: rgba(249, 115, 22, 0.15);
-    --orange-border: rgba(249, 115, 22, 0.3);
-  }
-}
-
-/* Container Geral */
-.admin-dashboard-container {
+.admin-dashboard-layout {
   min-height: 100vh;
-  background-color: var(--bg-background);
-  color: var(--text-foreground);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  box-sizing: border-box;
+  background-color: hsl(var(--background, #fafafa));
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: hsl(var(--foreground, #1f2937));
 }
 
-/* Cabeçalho */
-.dashboard-header {
-  border-bottom: 1px solid var(--border-color);
-  position: sticky;
-  top: 0;
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  z-index: 10;
+
+.dashboard-top-navbar {
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-@media (prefers-color-scheme: dark) {
-  .dashboard-header {
-    background-color: rgba(9, 9, 11, 0.8);
-  }
-}
-
-.header-container {
-  max-width: 1280px;
+.navbar-container {
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 0.75rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.header-brand {
+.brand-section {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
 
 .brand-icon-wrapper {
-  background-color: var(--primary-light);
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
   padding: 0.5rem;
-  border-radius: var(--radius-md);
+  border-radius: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.brand-gear-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #4b5563;
 }
 
 .brand-title {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   margin: 0;
-  line-height: 1.2;
+  color: #111827;
 }
 
 .brand-subtitle {
-  font-size: 0.875rem;
-  color: var(--text-muted);
+  font-size: 0.85rem;
+  color: #6b7280;
   margin: 0;
 }
 
-.header-actions {
+.user-action-section {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
-/* Perfil & Avatar */
-.avatar-btn {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.avatar-wrapper {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
+.admin-avatar-mini {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--primary-light);
 }
 
 .avatar-img {
@@ -137,230 +75,227 @@
   object-fit: cover;
 }
 
-.avatar-fallback {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--primary-color);
-}
-
-/* Botões Gerais */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
+.top-logout-btn {
+  background-color: #dc2626 !important;
+  color: #ffffff !important;
   font-weight: 500;
-  border-radius: var(--radius-md);
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.2s;
 }
 
-.btn-destructive {
-  background-color: var(--destructive-color);
-  color: #ffffff;
-}
-
-.btn-destructive:hover {
-  background-color: var(--destructive-hover);
-}
-
-.btn-icon {
-  font-size: 1.15rem !important;
+.btn-icon-left {
+  width: 1rem;
+  height: 1rem;
   margin-right: 0.5rem;
 }
 
-/* Estrutura de Layout do Main */
-.dashboard-main {
-  max-width: 1280px;
+
+.dashboard-main-content {
+  width: 100%;
+  padding: 2.5rem 0;
+}
+
+.content-container {
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 
-.dashboard-welcome {
-  margin-bottom: 2rem;
+
+.page-intro-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
-.welcome-title {
-  font-size: 1.875rem;
+.intro-title {
+  font-size: 2.25rem;
   font-weight: 700;
-  margin: 0 0 0.5rem 0;
+  margin: 0;
+  color: #000000;
 }
 
-.welcome-subtitle {
+.intro-subtitle {
   font-size: 1rem;
-  color: var(--text-muted);
+  color: #71717a;
   margin: 0;
 }
 
-/* Grid de Estatísticas */
-.stats-grid {
+/* Grid de Métricas Principais */
+.metrics-summary-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 1.5rem;
-  margin-bottom: 2rem;
 }
 
-@media (min-width: 768px) {
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
+@media (min-width: 640px) {
+  .metrics-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 1024px) {
-  .stats-grid {
-    grid-template-columns: repeat(4, 1fr);
+  .metrics-summary-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
-/* Cards Estilizados */
-.dashboard-card {
-  background-color: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
+.metric-card {
+  background-color: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 1rem;
+  box-shadow: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.metric-card-body {
   padding: 1.5rem;
-  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.card-header {
-  padding-bottom: 0.75rem;
-}
-
-.card-title {
+.metric-icon-title {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.metric-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.metric-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #09090b;
+}
+
+.metric-value-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.metric-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000000;
+}
+
+.metric-desc {
+  font-size: 0.85rem;
+  color: #a1a1aa;
+}
+
+
+.pending-highlight {
+  border-color: #fed7aa; 
+}
+
+
+.text-blue { color: #2563eb; }
+.text-green { color: #16a34a; }
+.text-purple { color: #9333ea; }
+.text-orange { color: #ea580c; }
+.text-orange-dark { color: #ea580c; }
+
+/* Painel de Ações Rápidas */
+.quick-actions-panel {
+  background-color: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.panel-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.panel-title {
   font-size: 1.125rem;
   font-weight: 600;
   margin: 0;
+  color: #000000;
 }
 
-.stat-number {
-  font-size: 1.875rem;
-  font-weight: 700;
-  margin: 0 0 0.25rem 0;
-}
-
-.stat-label {
+.panel-subtitle {
   font-size: 0.875rem;
-  color: var(--text-muted);
+  color: #71717a;
   margin: 0;
 }
 
-/* Modificadores de Cores para Elementos do Google Icons */
-.icon-primary { color: var(--primary-color); }
-.icon-blue { color: var(--blue-color); }
-.icon-green { color: var(--green-color); }
-.icon-purple { color: var(--purple-color); }
-.icon-orange { color: var(--orange-color); }
 
-/* Especificação do card Pendente */
-.card-pending {
-  border-color: var(--orange-border);
-  background-color: var(--orange-bg);
-}
-
-.text-orange {
-  color: var(--orange-color);
-}
-
-@media (prefers-color-scheme: dark) {
-  .text-orange {
-    color: #fb923c;
-  }
-}
-
-/* Seção de Ações Rápidas */
-.actions-container-card {
-  background-color: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
-  box-shadow: var(--shadow-sm);
-}
-
-.actions-card-header {
-  margin-bottom: 1.5rem;
-}
-
-.section-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin: 0 0 0.25rem 0;
-}
-
-.card-description {
-  font-size: 0.875rem;
-  color: var(--text-muted);
-  margin: 0;
-}
-
-.actions-grid {
+.actions-button-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 1rem;
 }
 
 @media (min-width: 768px) {
-  .actions-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .actions-button-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-@media (min-width: 1024px) {
-  .actions-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
 
-/* Botões de Ação Quadrados Grandes */
-.btn-action-outline {
-  height: 6rem;
+.action-tile-btn {
+  background-color: #ffffff;
+  border: 1px solid #e4e4e7;
+  border-radius: 0.75rem;
+  padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  background: transparent;
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  color: var(--text-foreground);
+  gap: 0.75rem;
   cursor: pointer;
-  transition: background-color 0.2s, border-color 0.2s;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
-.btn-action-outline:hover {
-  background-color: var(--primary-light);
-  border-color: var(--primary-color);
+.action-tile-btn:hover {
+  background-color: #f4f4f5;
+  border-color: #d4d4d8;
 }
 
-.action-icon {
-  font-size: 2rem !important;
+.tile-btn-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #000000;
 }
 
-.action-text {
-  font-size: 0.875rem;
-  font-weight: 500;
+.tile-btn-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #000000;
 }
 
-.btn-relative {
+
+.relative-badge-container {
   position: relative;
 }
 
-/* Notificação Numérica de Pendência (Badge) */
-.badge-pending {
+.tile-notification-badge {
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  background-color: var(--orange-color);
+  top: 1rem;
+  right: 1.25rem;
+  background-color: #ea580c;
   color: #ffffff;
   font-size: 0.75rem;
-  font-weight: 600;
-  border-radius: 50%;
-  width: 1.5rem;
-  height: 1.5rem;
+  font-weight: 700;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 9999px;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 2px 4px rgba(234, 88, 12, 0.2);
 }

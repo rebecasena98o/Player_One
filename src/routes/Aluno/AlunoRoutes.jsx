@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import Home from '../../pages/Home'; // Sua página atual do catálogo
 //import Perfil from '../pages/Perfil'; // Página de perfil (ícone do cabeçalho)
 //import Reservas from '../pages/Reservas'; // Página de reservas (ícone de notificações)
+// // Rota de detalhes do jogo para o aluno
 
 const AlunoRoutes = ({ user } = {}) => [
   <Route key="home" path="/home" element={<Home user={user} />} />,

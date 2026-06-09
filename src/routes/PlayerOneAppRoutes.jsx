@@ -3,27 +3,29 @@ import React, { useState } from 'react';
 import Login from '../pages/Register/Login';
 import Register from '../pages/Register/Register';
 
-// IMPORTAÇÃO DOS MÓDULOS DE ROTAS (Ajustado conforme sua nova estrutura)
+// IMPORTAÇÃO DOS MÓDULOS DE ROTAS
 import AlunoRoutes from './Aluno/AlunoRoutes'; 
+import DetailGameRoutes from './Aluno/DetailRoutes/DetailRoutes'; 
+
+// 🌟 GARANTA QUE ESTA LINHA APONTA EXATAMENTE PARA A SUA PASTA NO DISCO:
+import CreatePartysRoutes from './Aluno/CreatePartysRoutes/CreatePartyRoutes'; 
 
 function AppRoutes() {
-  // Estado do usuário simulado como ALUNO para liberar o catálogo
   const [user, setUser] = useState({ name: "Jogador", role: "ALUNO" });
 
   return (
     <BrowserRouter>
       <Routes>
-        {/* ==================== ROTAS PÚBLICAS ==================== */}
+        {/* Rotas Públicas */}
         <Route path="/" element={<Login />} />
         <Route path="/cadastro" element={<Register />} />
         
-        {/* ==================== ROTAS DO ALUNO ==================== 
-            Descomentado e ativado! O operador '...' espalha as rotas de aluno 
-            (incluindo a Home) aqui dentro de forma nativa.
-        */}
+        {/* Fragmentos de Módulos Injetados Nativamente */}
         {...AlunoRoutes({ user })}
+        {...DetailGameRoutes()}
+        {...CreatePartysRoutes()}
 
-        {/* ==================== FALLBACK (SEGURANÇA) ==================== */}
+        {/* Fallback de Segurança */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

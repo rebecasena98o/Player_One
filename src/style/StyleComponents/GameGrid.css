@@ -23,6 +23,6 @@
 .no-games-message {
   text-align: center;
   font-size: 1.1rem;
-  color: #666;
+  color: var(--muted-foreground); /* Substituído #666 por variável do tema */
   margin-top: 40px;
 }

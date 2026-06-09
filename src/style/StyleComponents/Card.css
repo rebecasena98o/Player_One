@@ -2,9 +2,10 @@
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 4; /* Mantém a proporção vertical dos cards da imagem */
+  aspect-ratio: 3 / 4; 
   border-radius: 12px;
   overflow: hidden;
+  border: 1px solid var(--border); /* 🌟 Evita que o card suma no fundo preto */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   text-decoration: none;

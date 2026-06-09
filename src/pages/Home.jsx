@@ -45,7 +45,7 @@ const Home = () => {
   );
 
   return (
-    <Layout searchQuery={searchQuery} setSearchQuery={setSearchQuery}>
+    <div className="home-page-container">
       <section className="hero-catalog">
         <h1>Catálogo de Jogos</h1>
         <p>Bem-vindo, usuário! Aproveite e reserve um jogo!</p>
@@ -56,7 +56,7 @@ const Home = () => {
       ) : (
         <GameGrid games={gamesToDisplay} />
       )}
-    </Layout>
+    </div>
   );
 };
 

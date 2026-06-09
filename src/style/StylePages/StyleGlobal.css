@@ -171,3 +171,25 @@
     color: var(--muted-foreground);
   }
 }
+
+@layer base {
+  body {
+    background-color: var(--background); /* 🌟 Garante que o fundo muda */
+    color: var(--foreground);
+    font-family: system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave global */
+  }
+}
+
+@layer layout {
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--background); /* 🌟 Sincroniza o container mestre */
+    color: var(--foreground);
+    transition: background-color 0.3s ease;
+  }
+}

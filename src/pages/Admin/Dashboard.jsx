@@ -1,17 +1,10 @@
-// AdminDashboard.jsx
 import { useNavigate } from 'react-router';
 import { useAuth } from '../../context/AuthContext';
-import { Button } from '../../components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '../../components/ui/avatar';
 import { motion } from 'motion/react';
-import { Users, Dices, Calendar, LogOut, Settings } from 'lucide-react';
 import { games } from '../../data/games';
 import { parties } from '../../data/parties';
 import { users } from '../../data/users';
-
-// Importação do arquivo de estilo separado
-import './AdminDashboard.css';
+import './AdminDashboard.css'; // Importação do CSS Puro
 
 export default function AdminDashboard() {
   const navigate = useNavigate();
@@ -28,6 +21,7 @@ export default function AdminDashboard() {
   };
 
   const getInitials = (name) => {
+    if (!name) return 'AD';
     return name
       .split(' ')
       .map(n => n[0])
@@ -37,70 +31,75 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="admin-dashboard">
+    <div className="admin-dashboard-container">
+      {/* Cabeçalho / Navbar */}
       <header className="dashboard-header">
         <div className="header-container">
-          <div className="header-left">
-            <div className="icon-wrapper">
-              <Settings className="icon-primary" />
+          <div className="header-brand">
+            <div className="brand-icon-wrapper">
+              <span className="material-symbols-outlined icon-primary">settings</span>
             </div>
-            <div className="header-title">
-              <h1>Painel Administrativo</h1>
-              <p>Bem-vindo, {user?.name}</p>
+            <div className="brand-text">
+              <h1 className="brand-title">Painel Administrativo</h1>
+              <p className="brand-subtitle">Bem-vindo, {user?.name}</p>
             </div>
           </div>
 
-          <div className="header-right">
-            <Button
-              variant="ghost"
-              size="icon"
+          <div className="header-actions">
+            <button 
+              className="avatar-btn" 
               onClick={() => navigate('/admin/profile')}
-              className="avatar-button"
+              title="Ver perfil"
             >
-              <Avatar className="avatar-frame">
-                <AvatarImage src={user?.avatar} alt={user?.name} />
-                <AvatarFallback className="avatar-fallback-custom">
-                  {user?.name ? getInitials(user.name) : 'AD'}
-                </AvatarFallback>
-              </Avatar>
-            </Button>
+              <div className="avatar-wrapper">
+                {user?.avatar ? (
+                  <img src={user.avatar} alt={user.name} className="avatar-img" />
+                ) : (
+                  <span className="avatar-fallback">
+                    {getInitials(user?.name)}
+                  </span>
+                )}
+              </div>
+            </button>
 
-            <Button variant="destructive" onClick={handleLogout}>
-              <LogOut className="logout-icon" />
+            <button className="btn btn-destructive" onClick={handleLogout}>
+              <span className="material-symbols-outlined btn-icon">logout</span>
               Sair
-            </Button>
+            </button>
           </div>
         </div>
       </header>
 
+      {/* Conteúdo Principal */}
       <main className="dashboard-main">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="welcome-section"
+          className="dashboard-welcome"
         >
-          <h2>Dashboard</h2>
-          <p>Visão geral do sistema PlayerOne</p>
+          <h2 className="welcome-title">Dashboard</h2>
+          <p className="welcome-subtitle">Visão geral do sistema PlayerOne</p>
         </motion.div>
 
+        {/* Grid de Cards Estatísticos */}
         <div className="stats-grid">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
-            <Card>
-              <CardHeader>
-                <CardTitle className="card-title-content">
-                  <Users className="icon-blue" />
+            <div className="dashboard-card">
+              <div className="card-header">
+                <h3 className="card-title">
+                  <span className="material-symbols-outlined icon-blue">group</span>
                   Usuários
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
+                </h3>
+              </div>
+              <div className="card-content">
                 <p className="stat-number">{totalUsers}</p>
-                <p className="stat-desc">Usuários ativos</p>
-              </CardContent>
-            </Card>
+                <p className="stat-label">Usuários ativos</p>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div
@@ -108,18 +107,18 @@ export default function AdminDashboard() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <Card>
-              <CardHeader>
-                <CardTitle className="card-title-content">
-                  <Dices className="icon-green" />
+            <div className="dashboard-card">
+              <div className="card-header">
+                <h3 className="card-title">
+                  <span className="material-symbols-outlined icon-green">casino</span>
                   Jogos
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
+                </h3>
+              </div>
+              <div className="card-content">
                 <p className="stat-number">{totalGames}</p>
-                <p className="stat-desc">Jogos cadastrados</p>
-              </CardContent>
-            </Card>
+                <p className="stat-label">Jogos cadastrados</p>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div
@@ -127,18 +126,18 @@ export default function AdminDashboard() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <Card>
-              <CardHeader>
-                <CardTitle className="card-title-content">
-                  <Calendar className="icon-purple" />
+            <div className="dashboard-card">
+              <div className="card-header">
+                <h3 className="card-title">
+                  <span className="material-symbols-outlined icon-purple">calendar_month</span>
                   Party's
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
+                </h3>
+              </div>
+              <div className="card-content">
                 <p className="stat-number">{totalParties}</p>
-                <p className="stat-desc">Total de party's</p>
-              </CardContent>
-            </Card>
+                <p className="stat-label">Total de party's</p>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div
@@ -146,65 +145,63 @@ export default function AdminDashboard() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <Card className="card-pending-custom">
-              <CardHeader>
-                <CardTitle className="card-title-content">
-                  <Calendar className="icon-orange" />
+            <div className="dashboard-card card-pending">
+              <div className="card-header">
+                <h3 className="card-title">
+                  <span className="material-symbols-outlined icon-orange">calendar_month</span>
                   Pendentes
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="stat-number text-pending-custom">{pendingParties}</p>
-                <p className="stat-desc">Party's aguardando aprovação</p>
-              </CardContent>
-            </Card>
+                </h3>
+              </div>
+              <div className="card-content">
+                <p className="stat-number text-orange">{pendingParties}</p>
+                <p className="stat-label">Party's aguardando aprovação</p>
+              </div>
+            </div>
           </motion.div>
         </div>
 
+        {/* Seção de Ações Rápidas */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
         >
-          <Card>
-            <CardHeader>
-              <CardTitle>Ações Rápidas</CardTitle>
-              <CardDescription>Gerenciar o sistema PlayerOne</CardDescription>
-            </CardHeader>
-            <CardContent className="actions-grid">
-              <Button
-                variant="outline"
-                className="action-button-custom"
+          <div className="dashboard-card actions-container-card">
+            <div className="actions-card-header">
+              <h3 className="section-title">Ações Rápidas</h3>
+              <p className="card-description">Gerenciar o sistema PlayerOne</p>
+            </div>
+            <div className="actions-grid">
+              <button
+                className="btn-action-outline"
                 onClick={() => navigate('/admin/games')}
               >
-                <Dices />
-                <span>Gerenciar Jogos</span>
-              </Button>
+                <span className="material-symbols-outlined action-icon">casino</span>
+                <span className="action-text">Gerenciar Jogos</span>
+              </button>
 
-              <Button
-                variant="outline"
-                className="action-button-custom"
+              <button
+                className="btn-action-outline"
                 onClick={() => navigate('/admin/users')}
               >
-                <Users />
-                <span>Gerenciar Usuários</span>
-              </Button>
+                <span className="material-symbols-outlined action-icon">group</span>
+                <span className="action-text">Gerenciar Usuários</span>
+              </button>
 
-              <Button
-                variant="outline"
-                className="action-button-custom"
+              <button
+                className="btn-action-outline btn-relative"
                 onClick={() => navigate('/admin/parties')}
               >
                 {pendingParties > 0 && (
-                  <span className="pending-badge">
+                  <span className="badge-pending">
                     {pendingParties}
                   </span>
                 )}
-                <Calendar />
-                <span>Gerenciar Party's</span>
-              </Button>
-            </CardContent>
-          </Card>
+                <span className="material-symbols-outlined action-icon">calendar_month</span>
+                <span className="action-text">Gerenciar Party's</span>
+              </button>
+            </div>
+          </div>
         </motion.div>
       </main>
     </div>

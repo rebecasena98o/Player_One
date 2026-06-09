@@ -1,0 +1,263 @@
+/* Variáveis de apoio baseadas no design token do sistema */
+:root {
+  --success-color: #16a34a;
+  --info-color: #2563eb;
+}
+
+/* Container de Página */
+.admin-profile-page {
+  min-height: 100vh;
+  background-color: hsl(var(--background));
+}
+
+/* Header Estilizado */
+.profile-header {
+  border-bottom: 1px solid hsl(var(--border));
+  position: sticky;
+  top: 0;
+  background-color: hsla(var(--background), 0.95);
+  backdrop-filter: blur(8px);
+  z-index: 10;
+}
+
+.header-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+}
+
+.header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+}
+
+/* Layout Principal */
+.profile-main {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 1rem;
+}
+
+.profile-content-wrapper {
+  max-width: 48rem; /* max-w-4xl */
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Cards */
+.profile-card {
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+}
+
+.card-header-flex {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.card-icon-container {
+  background-color: hsla(var(--primary), 0.1);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+/* Seção do Avatar */
+.avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.avatar-wrapper {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.avatar-component {
+  width: 8rem;
+  height: 8rem;
+}
+
+.avatar-fallback {
+  font-size: 1.875rem;
+  background-color: hsla(var(--primary), 0.2);
+  color: hsl(var(--primary));
+}
+
+.avatar-overlay-btn {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.avatar-wrapper:hover .avatar-overlay-btn {
+  opacity: 1;
+}
+
+.hidden-file-input {
+  display: none;
+}
+
+/* Informações de Texto do Perfil */
+.profile-info-display {
+  text-align: center;
+}
+
+.profile-display-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.profile-display-email {
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.profile-role-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.badge-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: hsl(var(--primary));
+}
+
+.profile-display-bio {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  max-width: 28rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Formulários */
+.edit-form-container, .security-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-actions-flex {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.w-full {
+  width: 100%;
+}
+
+/* Grid de Estatísticas */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .stats-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.stat-box {
+  background-color: hsl(var(--muted));
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+}
+
+/* Zona de Perigo */
+.danger-card {
+  border-color: hsla(var(--destructive), 0.5);
+}
+
+.danger-zone-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.5rem;
+}
+
+.danger-item-title {
+  font-weight: 500;
+}
+
+.danger-item-desc {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+}
+
+/* Auxiliares de Tamanho de Ícones Lucide */
+.icon-sm { width: 1rem; height: 1rem; }
+.icon-md { width: 1.25rem; height: 1.25rem; }
+.icon-lg { width: 1.5rem; height: 1.5rem; }
+.icon-xl { width: 2rem; height: 2rem; }
+.mr-2 { margin-right: 0.5rem; }
+
+/* Classes de Cores Utilitárias */
+.text-primary { color: hsl(var(--primary)); }
+.text-success { color: var(--success-color); }
+.text-info { color: var(--info-color); }
+.text-white { color: #ffffff; }

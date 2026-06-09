@@ -15,10 +15,6 @@ const Login = () => {
     navigate('/home');
   };
 
-  const handleForgotPassword = (e) => {
-    e.preventDefault();
-    alert("Um torpedo foi enviado para você!\nSiga as devidas instruções para recuperar sua senha.");
-  };
 
   return (
     <div className="auth-page-body">
@@ -56,13 +52,6 @@ const Login = () => {
           </p>
           
           <p className="auth-link-text">
-            <button 
-              type="button" 
-              onClick={handleForgotPassword} 
-              className="forgot-password-btn"
-            >
-              Esqueci minha senha
-            </button>
           </p>
         </form>
       </div>

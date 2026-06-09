@@ -1,0 +1,373 @@
+/* CONTAINER CENTRAL E SUAS DIRETRIZES */
+.parties-list-wrapper {
+  min-height: 100vh;
+  background-color: #f8fafc; /* 🌟 Fundo Geral Claro (Slate 50) */
+  color: #0f172a;            /* Texto Principal Escuro (Slate 900) */
+  font-family: 'Inter', sans-serif;
+  padding-bottom: 40px;
+}
+
+/* HEADER DA LISTAGEM */
+.parties-list-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(255, 255, 255, 0.9); /* 🌟 Fundo do Header Branco Semi-transparente */
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #e2e8f0;            /* Linha Divisória Clarinha */
+  padding: 16px 0;
+}
+
+.parties-list-header-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* BOTÃO DE VOLTAR */
+.btn-icon-back {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-icon-back:hover {
+  background-color: #f1f5f9;
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
+/* TEXTOS DO HEADER */
+.header-title-text h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a; /* 🌟 Título Escuro */
+  margin: 0;
+}
+
+.sub-header-text {
+  font-size: 0.875rem;
+  color: #64748b; /* Subtítulo Cinza */
+  margin: 4px 0 0 0;
+}
+
+/* BOTÃO "CRIAR PARTY'S" */
+.btn-parties-create-new {
+  background: #0f172a; /* 🌟 Botão Escuro dando Destaque Nobre */
+  border: 1px solid #0f172a;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-parties-create-new:hover {
+  background: #334155;
+  border-color: #334155;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+}
+
+.btn-icon-inner {
+  font-size: 1.15rem !important;
+}
+
+/* CONTAINER PRINCIPAL DO GRID */
+.parties-list-main {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.parties-grid-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* CARDS NO TEMA CLARO */
+.party-glass-card {
+  background: #ffffff; /* 🌟 Card Totalmente Branco */
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 24px;
+  /* Sombra leve no repouso imitando elevação física */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.party-glass-card:hover {
+  transform: translateY(-2px);
+  border-color: #cbd5e1;
+  /* Sombra mais proeminente no Hover */
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+}
+
+.party-card-top-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.party-title-block h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 4px 0;
+}
+
+.party-host-label {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* BADGE DE JOGADORES (SLOTS) */
+.party-slots-badge {
+  background: #f1f5f9; /* 🌟 Badge Clarinha */
+  border: 1px solid #e2e8f0;
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.badge-icon {
+  font-size: 1.1rem !important;
+  color: #64748b;
+}
+
+.party-card-description {
+  font-size: 0.95rem;
+  color: #334155; /* Texto da Descrição com Alto Contraste */
+  line-height: 1.5;
+  margin: 0 0 20px 0;
+}
+
+/* GRADE DE INFORMAÇÕES DO AGENDAMENTO */
+.party-info-subgrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 16px;
+}
+
+.party-info-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: #475569;
+}
+
+.meta-icon {
+  font-size: 1.15rem !important;
+  color: #94a3b8; /* Cor dos Ícones do Google */
+}
+
+.col-span-2 {
+  grid-column: span 2;
+}
+
+/* BOTÃO INTERNO DO CARD "VER DETALHES" */
+.btn-party-action-detail {
+  width: 100%;
+  background-color: #f1f5f9; /* 🌟 Botão Secundário Claro */
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.btn-party-action-detail:hover {
+  background-color: #e2e8f0;
+  border-color: #cbd5e1;
+}
+
+.btn-party-action-detail:active {
+  transform: scale(0.99);
+}
+
+/* EMPTY STATE */
+.parties-empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.empty-icon {
+  font-size: 3.5rem !important;
+  color: #94a3b8;
+}
+
+/* ==========================================================================
+   ESTADOS DE AGUARDANDO AUTORIZAÇÃO (Cliquados)
+   ========================================================================== */
+
+/* Esmaece o card ligeiramente para indicar que a ação já foi tomada */
+.party-card-disabled {
+  opacity: 0.75;
+  border-color: #cbd5e1;
+  background-color: #f1f5f9;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Modificadores do Botão quando solicitado */
+.btn-party-action-detail.btn-requested {
+  background-color: #e2e8f0 !important;
+  border-color: #cbd5e1 !important;
+  color: #64748b !important;
+  cursor: not-allowed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-inline-icon {
+  font-size: 1.1rem !important;
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   ESTRUTURA DO POP-UP (MODAL) - TEMA BRANCO IMPECÁVEL
+   ========================================================================== */
+
+.party-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(15, 23, 42, 0.4); /* Fundo escurecido sutil */
+  backdrop-filter: blur(6px);              /* Efeito blur refinado */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.party-modal-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 440px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e2e8f0;
+  animation: scaleUp 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.party-modal-icon-wrapper {
+  background-color: #f0fdf4; /* Verde bem clarinho de sucesso */
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px auto;
+  border: 1px solid #bbf7d0;
+}
+
+.party-modal-success-icon {
+  font-size: 2rem !important;
+  color: #16a34a; /* Verde sucesso */
+}
+
+.party-modal-card h2 {
+  font-size: 1.4rem;
+  color: #0f172a;
+  margin: 0 0 12px 0;
+  font-weight: 700;
+}
+
+.party-modal-card p {
+  font-size: 0.95rem;
+  color: #334155;
+  line-height: 1.6;
+  margin: 0 0 8px 0;
+}
+
+.party-modal-card strong {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.party-modal-subtext {
+  font-size: 0.85rem !important;
+  color: #64748b !important;
+  margin-bottom: 24px !important;
+}
+
+/* Botão de Fechar do Pop-up */
+.btn-party-modal-close {
+  background-color: #0f172a;
+  color: #ffffff;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  width: 100%;
+}
+
+.btn-party-modal-close:hover {
+  background-color: #334155;
+}
+
+/* Animações do Modal */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

@@ -66,7 +66,11 @@ export default function CreateParty() {
       <main className="create-party-main">
         <div className="create-party-card">
           <div className="create-party-info-block">
-            <div className="info-block-icon">📅</div>
+            <div className="info-block-icon">
+              <span className="material-symbols-outlined" style={{ fontSize: '28px', color: '#090d16' }}>
+                calendar_month
+              </span>
+            </div>
             <div className="info-block-text">
               <h2>Organize sua partida</h2>
               <p>Preencha os detalhes abaixo</p>

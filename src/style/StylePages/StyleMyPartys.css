@@ -1,0 +1,416 @@
+/* CONTAINER MASTER */
+.my-parties-wrapper {
+  min-height: 100vh;
+  background-color: #f8fafc; /* Fundo claro padrão */
+  color: #0f172a;
+  font-family: 'Inter', sans-serif;
+  padding-bottom: 60px;
+}
+
+/* HEADER FIXO */
+.my-parties-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #e2e8f0;
+  padding: 14px 0;
+}
+
+.my-parties-header-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.my-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-my-back {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-my-back:hover {
+  background-color: #f1f5f9;
+  color: #0f172a;
+  border-color: #94a3b8;
+}
+
+.my-header-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+/* DASHBOARD LAYOUT CONTROLLER */
+.my-parties-main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.my-parties-dashboard-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.my-dashboard-intro {
+  margin-bottom: 28px;
+}
+
+.my-dashboard-intro h2 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 6px 0;
+}
+
+.my-dashboard-subtext {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* TABS SYSTEM (Lista de Seleção) */
+.my-tabs-list {
+  display: flex;
+  gap: 8px;
+  border-bottom: 2px solid #e2e8f0;
+  margin-bottom: 24px;
+  padding-bottom: 1px;
+}
+
+.my-tab-trigger {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: -2px;
+}
+
+.my-tab-trigger:hover {
+  color: #0f172a;
+}
+
+.my-tab-trigger.active {
+  color: #0f172a;
+  border-bottom-color: #0f172a; /* Traço escuro ativo embaixo da aba */
+}
+
+.relative-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Contador de notificações na tab */
+.my-requests-badge-count {
+  background-color: #f97316; /* Laranja de aviso do modelo */
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 20px;
+  min-width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px;
+}
+
+/* GRID DOS CARDS DE COMPROMISSO */
+.my-parties-grid-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* CARDS REESTRUTURADOS */
+.my-custom-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Diferenciação opcional visual para as partys onde sou dono */
+.highlight-host-card {
+  border-left: 4px solid #0f172a;
+}
+
+.my-card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  gap: 16px;
+}
+
+.host-indicator-pill {
+  display: inline-block;
+  background-color: #f1f5f9;
+  color: #0f172a;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.guest-indicator-label {
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.my-card-game-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 4px 0;
+}
+
+.my-card-game-desc {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* BADGES DE ESTADO INTERNO */
+.my-status-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.badge-approved {
+  background-color: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+}
+
+.badge-joined {
+  background-color: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+}
+
+/* SUBGRID DE DETALHES TÉCNICOS */
+.my-card-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 14px 0;
+  border-top: 1px solid #f1f5f9;
+  border-bottom: 1px solid #f1f5f9;
+  margin-bottom: 16px;
+}
+
+.my-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+.my-detail-item span {
+  font-size: 1.05rem !important;
+  color: #94a3b8;
+}
+
+/* BOTÃO INTERNO DE DETALHAMENTO */
+.btn-my-card-action {
+  width: 100%;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.btn-my-card-action span {
+  font-size: 1.15rem !important;
+}
+
+.btn-my-card-action:hover {
+  background-color: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}
+
+/* ==========================================================================
+   ESTILOS ESPECÍFICOS DO FLUXO DE SOLICITAÇÃO (REQUESTS TAB)
+   ========================================================================== */
+.request-card-layout {
+  border-top: 4px solid #f97316; /* Destaca que é uma ação pendente urgente */
+}
+
+.request-card-top {
+  margin-bottom: 14px;
+}
+
+.request-game-context {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.request-time-context {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin: 2px 0 0 0;
+}
+
+/* Perfil com Avatar */
+.request-user-profile-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #f8fafc;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 16px;
+}
+
+.my-avatar-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.my-avatar-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.my-avatar-fallback {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.request-user-info {
+  flex: 1;
+}
+
+.request-user-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0;
+}
+
+.request-user-date-sub {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Ações Duais */
+.request-actions-dual-row {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-request-decision {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: opacity 0.15s ease;
+}
+
+.btn-request-decision span {
+  font-size: 1.1rem !important;
+}
+
+.btn-request-decision.approve-trigger {
+  background-color: #16a34a;
+  color: #ffffff;
+}
+
+.btn-request-decision.reject-trigger {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+.btn-request-decision:hover {
+  opacity: 0.9;
+}
+
+/* EMPTY STATES */
+.my-parties-empty-state-pane {
+  text-align: center;
+  padding: 48px 16px;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.big-empty-icon {
+  font-size: 2.5rem !important;
+  color: #cbd5e1;
+  margin-bottom: 12px;
+}
+
+.btn-my-empty-action {
+  background-color: #0f172a;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 14px;
+  cursor: pointer;
+}

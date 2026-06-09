@@ -1,0 +1,226 @@
+/* AdminDashboard.css */
+
+:root {
+  --background-blur: rgba(255, 255, 255, 0.95);
+  --border-color: #e4e4e7;
+  --text-muted: #71717a;
+  --primary-color: #3b82f6; /* Ajuste de acordo com seu tema */
+}
+
+/* Modo escuro (opcional, caso use) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-blur: rgba(24, 24, 27, 0.95);
+    --border-color: #27272a;
+    --text-muted: #a1a1aa;
+  }
+}
+
+.admin-dashboard {
+  min-height: 100vh;
+  background-color: var(--background);
+}
+
+/* Header */
+.dashboard-header {
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  background-color: var(--background-blur);
+  backdrop-filter: blur(8px);
+  z-index: 10;
+}
+
+.header-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.icon-wrapper {
+  background-color: rgba(59, 130, 246, 0.1);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-primary {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--primary-color);
+}
+
+.header-title {
+  text-align: left;
+}
+
+.header-title h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.header-title p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.avatar-button {
+  position: relative;
+}
+
+.avatar-frame {
+  width: 2rem;
+  height: 2rem;
+}
+
+.avatar-fallback-custom {
+  font-size: 0.75rem;
+  background-color: rgba(59, 130, 246, 0.2);
+  color: var(--primary-color);
+}
+
+.logout-icon {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+}
+
+/* Conteúdo Principal */
+.dashboard-main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.welcome-section {
+  margin-bottom: 2rem;
+}
+
+.welcome-section h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.welcome-section p {
+  color: var(--text-muted);
+}
+
+/* Grid de Estatísticas (Cards) */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Cores específicas dos ícones nos cards */
+.icon-blue { color: #3b82f6; width: 1.25rem; height: 1.25rem; }
+.icon-green { color: #10b981; width: 1.25rem; height: 1.25rem; }
+.icon-purple { color: #8b5cf6; width: 1.25rem; height: 1.25rem; }
+.icon-orange { color: #f97316; width: 1.25rem; height: 1.25rem; }
+
+.card-title-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.125rem;
+}
+
+.stat-number {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.stat-desc {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Customização do Card Pendente */
+.card-pending-custom {
+  border-color: #fed7aa !important;
+  background-color: rgba(254, 243, 199, 0.3) !important;
+}
+.text-pending-custom {
+  color: #ea580c !important;
+}
+
+/* Grid de Ações Rápidas */
+.actions-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.action-button-custom {
+  height: 6rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.5rem !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative;
+  width: 100%;
+}
+
+.action-button-custom svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+/* Badge de Notificação */
+.pending-badge {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: #f97316;
+  color: #ffffff;
+  font-size: 0.75rem;
+  border-radius: 9999px;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Media Queries para Responsividade (Substituindo md: e lg:) */
+@media (min-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .actions-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

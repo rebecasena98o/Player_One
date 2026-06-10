@@ -35,21 +35,25 @@ const Register = () => {
             required 
           />
           
+          {/* 🌟 CAMPO MATRÍCULA: Aceita apenas números e otimiza o teclado mobile */}
           <label>Matrícula</label>
           <input 
             type="text" 
+            inputMode="numeric"
             placeholder="Digite sua matrícula" 
             value={matricula} 
-            onChange={(e) => setMatricula(e.target.value)} 
+            onChange={(e) => setMatricula(e.target.value.replace(/\D/g, ''))} 
             required 
           />
           
+          {/* 🌟 CAMPO SENHA: Aceita apenas números e otimiza o teclado mobile */}
           <label>Senha</label>
           <input 
             type="password" 
+            inputMode="numeric"
             placeholder="Digite sua senha" 
             value={senha} 
-            onChange={(e) => setSenha(e.target.value)} 
+            onChange={(e) => setSenha(e.target.value.replace(/\D/g, ''))} 
             required 
           />
           

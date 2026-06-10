@@ -1,4 +1,4 @@
-/* src/style/Header.css */
+/* src/style/StyleComponents/Header.css */
 
 /* --- CONTAINER MESTRE DO HEADER --- */
 .main-header {
@@ -76,7 +76,7 @@
 }
 
 .logo-text {
-  font-family: 'Playfair Display', Georgia, serif; /* Fonte de alta classe idêntica à imagem */
+  font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
   font-size: 1.35rem;
   letter-spacing: -0.2px;
@@ -96,7 +96,7 @@
   transition: all 0.2s ease;
 }
 
-/* Efeito sutil ao clicar para digitar */
+/* Efeito sutil ao clicar para digitar (Tema Claro) */
 .search-bar-container:focus-within {
   border-color: rgba(0, 0, 0, 0.12);
   background-color: var(--background);
@@ -106,7 +106,7 @@
 .search-icon {
   width: 16px;
   height: 16px;
-  color: var(--muted-foreground, #717182);
+  color: var(--muted-foreground, #4d4d58);
   margin-right: 10px;
   flex-shrink: 0;
 }
@@ -161,25 +161,91 @@
   right: 2px;
   width: 7px;
   height: 7px;
-  background-color: #ef4444; /* Vermelho vivo idêntico ao protótipo */
+  background-color: #ef4444;
   border-radius: 50%;
-  border: 1.5px solid var(--background); /* Cria o anel de corte em volta do ponto */
+  border: 1.5px solid var(--background);
 }
 
-/* --- ADAPTABILIDADE AO SEU DARK MODE NATIVO --- */
-.dark .main-header {
-  background-color: var(--card);
+/* --- 🌟 ADAPTABILIDADE AO MODO ESCURO ULTRA-REFORÇADA (ANTI-GRADIENTE) 🌟 --- */
+
+/* 1. Altera o Header e a Logo */
+html.dark .main-header,
+.dark .main-header,
+html[class*="dark"] .main-header {
+  background-color: var(--card, #1c1c1e) !important;
+  border-bottom: 1px solid var(--border, #2c2c2e) !important;
+  background-image: none !important; /* Anula degradês no header também */
 }
 
-.dark .logo-text {
-  color: var(--foreground);
+html.dark .logo-text,
+.dark .logo-text,
+html[class*="dark"] .logo-text {
+  color: var(--foreground, #ffffff) !important;
 }
 
-.dark .search-bar-container:focus-within {
-  border-color: var(--border);
-  background-color: rgba(255, 255, 255, 0.02);
+html.dark .logo-icon-box,
+.dark .logo-icon-box,
+html[class*="dark"] .logo-icon-box {
+  background-color: var(--input-background, #2c2c2e) !important;
+  border-color: var(--border, #3a3a3c) !important;
+  background-image: none !important;
 }
 
-.dark .notification-dot {
-  border-color: var(--card);
+/* 🌟 2. SOLUÇÃO FINAL PARA A BARRA DE PESQUISA (ESTADO NORMAL) 🌟 */
+/* Usamos seletores combinados e genéricos para garantir que pegue o estado ativo do dark mode */
+html.dark .search-bar-container,
+.dark .search-bar-container,
+html[class*="dark"] .search-bar-container,
+.search-bar-container.dark-mode-active { /* Classe genérica caso precise injetar via JS */
+  background-color: #2c2c2e !important; /* Cor escura sólida forçada */
+  background-image: none !important;    /* 👈 MATA O DEGRADÊ BRANCO EM REPOUSO */
+  border: 1px solid var(--border, #3a3a3c) !important;
+  color: #ffffff !important;
+}
+
+/* 🌟 3. SOLUÇÃO FINAL PARA O FOCO (ESTADO CLICADO) 🌟 */
+html.dark .search-bar-container:focus-within,
+.dark .search-bar-container:focus-within,
+html[class*="dark"] .search-bar-container:focus-within {
+  border-color: var(--primary, #ffffff) !important;
+  background-color: #121212 !important; /* Fundo ligeiramente diferente ao focar */
+  background-image: none !important;    /* Garante que o degradê não volte no foco */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* 4. Ajusta os elementos internos no modo escuro */
+html.dark .search-input,
+.dark .search-input,
+html[class*="dark"] .search-input {
+  color: #ffffff !important;
+  background-color: transparent !important; /* Garante que o input não tenha fundo próprio */
+}
+
+html.dark .search-input::placeholder,
+.dark .search-input::placeholder,
+html[class*="dark"] .search-input::placeholder {
+  color: #aaaaaa !important;
+  opacity: 0.6 !important;
+}
+
+html.dark .search-icon,
+.dark .search-icon,
+html[class*="dark"] .search-icon {
+  color: #aaaaaa !important;
+}
+
+/* 5. Ajusta botões e notificações no escuro */
+html.dark .header-icon-btn:hover, 
+html.dark .theme-toggle-btn:hover,
+.dark .header-icon-btn:hover, 
+.dark .theme-toggle-btn:hover,
+html[class*="dark"] .header-icon-btn:hover,
+html[class*="dark"] .theme-toggle-btn:hover {
+  background-color: #2c2c2e !important;
+}
+
+html.dark .notification-dot,
+.dark .notification-dot,
+html[class*="dark"] .notification-dot {
+  border-color: #1c1c1e !important;
 }

@@ -1,4 +1,6 @@
-/* Container Geral da Página */
+/* ==========================================================================
+   CONTAINER GERAL DA PÁGINA
+   ========================================================================== */
 .detail-page-wrapper {
   position: relative;
   min-height: 100vh;
@@ -14,7 +16,7 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Banner Fluido de Fundo (Blur Intenso do Figma) */
+/* BANNER FLUIDO DE FUNDO (BLUR INTENSO ESTILO FIGMA) */
 .detail-bg-banner {
   position: absolute;
   inset: 0;
@@ -22,26 +24,27 @@
   height: 100%;
   background-size: cover;
   background-position: center;
-  filter: blur(1px) brightness(0.85);
-  transform: scale(1.08);
+  filter: blur(2px) brightness(0.8);
+  transform: scale(1.05);
   z-index: 1;
 }
 
 .detail-bg-overlay {
   position: absolute;
   inset: 0;
-  /* 🌟 Altera a película de fundo dinamicamente: branca translúcida no light, escura no dark */
-  background: rgba(var(--background-rgb, 255, 255, 255), 0.15);
-  backdrop-filter: blur(3px);
+  /* Película de fundo clara e translúcida por padrão */
+  background: rgba(var(--background-rgb, 255, 255, 255), 0.25);
+  backdrop-filter: blur(4px);
   z-index: 2;
+  transition: background-color 0.3s ease;
 }
 
-/* :is(.dark *) altera o comportamento do overlay quando o modo escuro é ativo */
+/* 🌟 CALIBRAÇÃO ESCURA: Película densa no escuro para isolar e destacar o card central */
 :is(.dark *) .detail-bg-overlay {
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(15, 23, 42, 0.65);
 }
 
-/* Botão Flutuante de Voltar */
+/* BOTÃO FLUTUANTE DE VOLTAR */
 .detail-btn-back {
   position: absolute;
   top: 24px;
@@ -49,11 +52,11 @@
   z-index: 50;
   height: 40px;
   width: 40px;
-  background-color: var(--card); /* 🌟 Dinâmico */
-  border: 1px solid var(--border); /* 🌟 Dinâmico */
+  background-color: var(--card); 
+  border: 1px solid var(--border); 
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  color: var(--foreground); /* 🌟 Dinâmico */
+  color: var(--foreground); 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,31 +66,49 @@
   transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
+:is(.dark *) .detail-btn-back {
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
 .detail-btn-back:hover {
-  background-color: var(--input-background); /* 🌟 Dinâmico */
+  background-color: var(--input-background); 
   transform: translateY(-2px);
+}
+
+:is(.dark *) .detail-btn-back:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .detail-btn-back:active {
   transform: translateY(0);
 }
 
-/* Painel de Conteúdo Centralizado */
+/* ==========================================================================
+   PAINEL DE CONTEÚDO CENTRALIZADO (CARD DE DETALHES)
+   ========================================================================== */
 .detail-card-panel {
   position: relative;
   z-index: 10;
   width: 100%;
   max-width: 850px;
-  background: var(--card); /* 🌟 Muda para cor de card escura no dark */
+  background: var(--card); /* 🌟 Grafite escuro no dark mode automaticamente */
   border-radius: 20px;
   padding: 40px;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.12);
-  border: 1px solid var(--border); /* 🌟 Adapta-se para não estourar no escuro */
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border); 
   box-sizing: border-box;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Cabeçalho Visual (Título e Status) */
+/* 🌟 VOLUMETRIA E RELEVO PREMIUM NO MODO ESCURO */
+:is(.dark *) .detail-card-panel {
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
+}
+
+/* CABEÇALHO VISUAL (TÍTULO E STATUS) */
 .detail-main-header {
   display: flex;
   flex-direction: row;
@@ -100,7 +121,7 @@
 .detail-title-group h1 {
   font-size: 2.5rem;
   font-weight: 800;
-  color: var(--foreground); /* 🌟 Inverte de preto para branco off-white */
+  color: var(--foreground); 
   margin: 0 0 12px 0;
   letter-spacing: -0.02em;
   transition: color 0.3s ease;
@@ -112,28 +133,28 @@
   flex-wrap: wrap;
 }
 
+/* SYSTEM TAGS (BADGES DE CATEGORIAS / MECÂNICAS) */
 .detail-badge-tag {
-  /* No Modo Claro: Fundo cinza suave / Texto grafite */
   background-color: var(--input-background); 
   color: var(--muted-foreground);            
   border-radius: 8px;
   padding: 6px 14px;
-  font-weight: 600; /* Um pouco mais de peso para melhorar a leitura */
+  font-weight: 600; 
   font-size: 0.75rem;
-  text-transform: uppercase; /* Dá um estilo mais "premium" de interface */
+  text-transform: uppercase; 
   letter-spacing: 0.5px;
   border: 1px solid transparent;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Quando o Modo Escuro está ativo, injetamos um contraste de destaque */
+/* 🌟 MAXIMIZAÇÃO DE VISIBILIDADE DAS BADGES NO MODO ESCURO */
 :is(.dark *) .detail-badge-tag {
-  background-color: rgba(255, 255, 255, 0.08); /* Fundo sutil para não sumir no fundo escuro */
-  color: var(--accent-foreground);             /* Inverte para a cor de destaque clara */
-  border-color: rgba(255, 255, 255, 0.15);     /* Borda fina para dar relevo no card escuro */
+  background-color: rgba(255, 255, 255, 0.05); 
+  color: var(--foreground);                   
+  border-color: rgba(255, 255, 255, 0.1);     
+  opacity: 0.9;
 }
 
-/* Variação Outline (se usada em alguma badge secundária) */
 .detail-badge-tag.outline {
   background-color: transparent;
   border: 1px solid var(--border);
@@ -141,173 +162,11 @@
 }
 
 :is(.dark *) .detail-badge-tag.outline {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.15);
   color: var(--muted-foreground);
 }
 
-.detail-badge-tag.outline {
-  background-color: transparent;
-  border: 1px solid var(--border); /* 🌟 Dinâmico */
-  color: var(--muted-foreground);  /* 🌟 Dinâmico */
-}
-
-/* Badges de Disponibilidade Nativas */
-.detail-status-indicator {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-
-/* Mantemos as cores vivas de status, mas garantimos legibilidade */
-.detail-status-indicator.available {
-  background-color: #00cc66;
-  color: #ffffff;
-}
-
-.detail-status-indicator.unavailable {
-  background-color: #ef4444;
-  color: #ffffff;
-}
-
-/* Grid de Atributos com Emojis */
-.detail-attributes-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-bottom: 32px;
-  padding-bottom: 28px;
-  border-bottom: 1px solid var(--border); /* 🌟 Linha divisória dinâmica */
-  transition: border-color 0.3s ease;
-}
-
-.detail-attr-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.detail-attr-icon-box {
-  background-color: var(--input-background); /* 🌟 Quadrados cinza claro / grafite escuro */
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  flex-shrink: 0;
-  transition: background-color 0.3s ease;
-}
-
-.detail-attr-text-box p {
-  margin: 0;
-}
-
-.detail-attr-label {
-  color: var(--muted-foreground); /* 🌟 Rótulo legível e suave */
-  font-size: 0.75rem;
-  font-weight: 500;
-  margin-bottom: 2px !important;
-  transition: color 0.3s ease;
-}
-
-.detail-attr-value {
-  color: var(--foreground); /* 🌟 Valores numéricos em alto contraste */
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-
-/* Área de Descrição */
-.detail-description-section {
-  margin-bottom: 36px;
-}
-
-.detail-description-section h2 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--foreground); /* 🌟 Título "Descrição" dinâmico */
-  margin: 0 0 10px 0;
-  transition: color 0.3s ease;
-}
-
-.detail-description-section p {
-  color: var(--muted-foreground); /* 🌟 Texto corrido harmônico */
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin: 0;
-  transition: color 0.3s ease;
-}
-
-/* Ações Inferiores (Botões dinâmicos) */
-.detail-actions-footer {
-  display: flex;
-  gap: 12px;
-}
-
-.detail-btn-primary {
-  flex: 1;
-  background-color: var(--primary);            /* 🌟 Inverte automaticamente */
-  color: var(--primary-foreground);   /* 🌟 Texto inverte proporcionalmente */
-  border: none;
-  border-radius: 12px;
-  height: 48px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.detail-btn-primary:hover:not(:disabled) {
-  opacity: 0.9;
-}
-
-.detail-btn-primary:disabled {
-  background-color: var(--muted); /* 🌟 Cor de desabilitado dinâmica */
-  color: var(--muted-foreground);
-  cursor: not-allowed;
-}
-
-.detail-btn-secondary {
-  background-color: transparent;
-  color: var(--foreground);        /* 🌟 Texto dinâmico */
-  border: 1px solid var(--border); /* 🌟 Borda discreta dinâmica */
-  border-radius: 12px;
-  height: 48px;
-  padding: 0 24px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.detail-btn-secondary:hover {
-  background-color: var(--input-background);
-}
-
-/* Responsividade Básica */
-@media (max-width: 640px) {
-  .detail-main-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .detail-attributes-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  .detail-actions-footer {
-    flex-direction: column;
-  }
-  .detail-card-panel {
-    padding: 24px;
-  }
-}
-
-/* Customização do Bloco de Disponibilidade conforme o Figma */
+/* BADGES DE DISPONIBILIDADE NATIVAS CORES VIVAS */
 .detail-status-indicator {
   display: flex;
   align-items: center;
@@ -320,22 +179,20 @@
 }
 
 .detail-status-indicator.available {
-  background-color: #00cc66;
+  background-color: #10b981; /* Tom esmeralda vibrante e legível */
   color: #ffffff;
 }
 
 .detail-status-indicator.unavailable {
-  background-color: #ef4444;
+  background-color: #ef4444; /* Vermelho vivo */
   color: #ffffff;
 }
 
-/* Ícone de check ou X dentro do indicador */
 .detail-status-icon {
   font-size: 1.2rem;
   font-weight: bold;
 }
 
-/* Container dos textos internos */
 .detail-status-info-box {
   display: flex;
   flex-direction: column;
@@ -354,4 +211,187 @@
 .detail-status-qty {
   font-size: 1.1rem;
   font-weight: 700;
+}
+
+/* ==========================================================================
+   GRID DE ATRIBUTOS TÉCNICOS COM EMOJIS (JOGADORES, TEMPO, IDADE)
+   ========================================================================== */
+.detail-attributes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border); 
+  transition: border-color 0.3s ease;
+}
+
+:is(.dark *) .detail-attributes-grid {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.detail-attr-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.detail-attr-icon-box {
+  background-color: var(--input-background); 
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  transition: background-color 0.3s ease;
+}
+
+/* Melhora a profundidade do container do emoji no escuro */
+:is(.dark *) .detail-attr-icon-box {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.detail-attr-text-box p {
+  margin: 0;
+}
+
+.detail-attr-label {
+  color: var(--muted-foreground); 
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-bottom: 2px !important;
+  transition: color 0.3s ease;
+}
+
+:is(.dark *) .detail-attr-label {
+  color: rgba(255, 255, 255, 0.4); /* Ganho de nitidez e suavidade */
+}
+
+.detail-attr-value {
+  color: var(--foreground); 
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+/* ÁREA DE DESCRIÇÃO DO JOGO */
+.detail-description-section {
+  margin-bottom: 36px;
+}
+
+.detail-description-section h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--foreground); 
+  margin: 0 0 10px 0;
+  transition: color 0.3s ease;
+}
+
+.detail-description-section p {
+  color: var(--muted-foreground); 
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+/* Suaviza e melhora o contraste do texto longo da bio no escuro */
+:is(.dark *) .detail-description-section p {
+  color: var(--foreground);
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+   AÇÕES INFERIORES (BOTÕES DA FOOTER)
+   ========================================================================== */
+.detail-actions-footer {
+  display: flex;
+  gap: 12px;
+}
+
+/* Botão Primário (Alugar / Entrar na Party) */
+.detail-btn-primary {
+  flex: 1;
+  background-color: var(--primary);            
+  color: var(--primary-foreground);   
+  border: none;
+  border-radius: 12px;
+  height: 48px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease, transform 0.1s ease;
+}
+
+:is(.dark *) .detail-btn-primary {
+  background-color: var(--foreground); /* Inverte para branco puro/off-white */
+  color: var(--background);            /* Inverte para a cor profunda do dark */
+}
+
+.detail-btn-primary:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.detail-btn-primary:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.detail-btn-primary:disabled {
+  background-color: var(--muted); 
+  color: var(--muted-foreground);
+  cursor: not-allowed;
+}
+
+:is(.dark *) .detail-btn-primary:disabled {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* Botão Secundário (Ver Partys Criadas) */
+.detail-btn-secondary {
+  background-color: transparent;
+  color: var(--foreground);        
+  border: 1px solid var(--border); 
+  border-radius: 12px;
+  height: 48px;
+  padding: 0 24px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+:is(.dark *) .detail-btn-secondary {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.detail-btn-secondary:hover {
+  background-color: var(--input-background);
+}
+
+:is(.dark *) .detail-btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 640px) {
+  .detail-main-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .detail-attributes-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .detail-actions-footer {
+    flex-direction: column;
+  }
+  .detail-card-panel {
+    padding: 24px;
+  }
 }

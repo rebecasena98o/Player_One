@@ -11,8 +11,8 @@ import PartiesRoutes from './Aluno/PartysRoutes/PartysRoutes';
 import MyPartysRoutes from './Aluno/MyPartys/MyPartysRoutes';
 import PartyDetailsRoutes from './Aluno/PartysDetailRoutes/PartyDetailsRoutes';
 
-function AppRoutes() {
-  // O estado do utilizador nasce aqui
+// 🌟 CORREÇÃO: Fazemos o AppRoutes receber o searchQuery vindo do App.jsx
+function AppRoutes({ searchQuery }) {
   const [user, setUser] = useState({ name: "Jogador", role: "ALUNO" });
 
   return (
@@ -21,8 +21,8 @@ function AppRoutes() {
       <Route path="/" element={<Login />} />
       <Route path="/cadastro" element={<Register />} />
       
-      {/* 🌟 CORREÇÃO AQUI: Passamos o user E TAMBÉM o setUser para dentro das rotas do Aluno */}
-      {...AlunoRoutes({ user, setUser })}
+      {/* 🌟 CORREÇÃO: Incluímos o searchQuery dentro do objeto enviado para o AlunoRoutes */}
+      {...AlunoRoutes({ user, setUser, searchQuery })}
       
       {...DetailGameRoutes()}
       {...CreatePartysRoutes()}

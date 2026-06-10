@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../components/Loader';
 
+
 // Importação da folha de estilo desacoplada
 import '../../style/StylePages/StylePartysList.css';
 

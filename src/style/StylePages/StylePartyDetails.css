@@ -1,18 +1,29 @@
+/* ==========================================================================
+   CONTAINER GERAL DA PÁGINA
+   ========================================================================== */
 .party-details-page-wrapper {
   min-height: 100vh;
-  background-color: #f8fafc; /* Fundo principal claro */
-  color: #374151; /* Texto geral escuro */
+  background-color: var(--background); /* 🌟 Dinâmico */
+  color: var(--foreground);            /* 🌟 Dinâmico */
   font-family: 'Inter', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* STICKY HEADER */
+/* STICKY HEADER ESTILO BLUR TRADUCENTE */
 .party-details-sticky-header {
   position: sticky;
   top: 0;
-  background-color: rgba(255, 255, 255, 0.9); /* Header semi-transparente claro */
+  background-color: rgba(var(--background-rgb, 255, 255, 255), 0.9); 
   backdrop-filter: blur(10px);
-  border-block: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border);
   z-index: 100;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Força fundo translúcido escuro ideal no Dark Mode */
+:is(.dark *) .party-details-sticky-header {
+  background-color: rgba(15, 23, 42, 0.85);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
 .party-details-header-container {
@@ -24,10 +35,11 @@
   gap: 16px;
 }
 
+/* BOTÃO VOLTAR DO HEADER */
 .btn-details-header-back {
-  background: transparent;
-  border: 1px solid #cbd5e1;
-  color: #1f2937;
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--foreground);
   border-radius: 8px;
   width: 40px;
   height: 40px;
@@ -38,8 +50,17 @@
   transition: all 0.2s ease;
 }
 
+:is(.dark *) .btn-details-header-back {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
 .btn-details-header-back:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: var(--input-background);
+  border-color: #ff4757;
+}
+
+:is(.dark *) .btn-details-header-back:hover {
+  background-color: rgba(255, 255, 255, 0.05);
   border-color: #ff4757;
 }
 
@@ -47,16 +68,16 @@
   font-size: 24px;
   font-weight: 700;
   margin: 0;
-  color: #111827; /* Título principal escuro */
+  color: var(--foreground);
 }
 
 .party-details-header-titles p {
   font-size: 14px;
-  color: #6b7280; /* Subtítulos mais suaves */
+  color: var(--muted-foreground);
   margin: 4px 0 0 0;
 }
 
-/* LAYOUT E GRID */
+/* LAYOUT E ESTRUTURA DE GRIDS */
 .party-details-main-layout {
   max-width: 1280px;
   margin: 0 auto;
@@ -81,13 +102,21 @@
   gap: 24px;
 }
 
-/* REUSABLE PREMIUM CARD STYLE */
+/* ==========================================================================
+   CARDS VISUAIS DO ECOSSISTEMA (REUSABLE PREMIUM CARD)
+   ========================================================================== */
 .details-custom-card {
-  background: #ffffff; /* Card puramente branco */
-  border: 1px solid #e5e7eb;
+  background: var(--card); /* 🌟 Muda automaticamente para escuro */
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Sombra muito mais suave */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+:is(.dark *) .details-custom-card {
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .details-card-header {
@@ -97,18 +126,18 @@
 .details-card-header h3 {
   font-size: 18px;
   font-weight: 600;
-  color: #111827;
+  color: var(--foreground);
   margin: 0;
 }
 
 .card-sub-label {
   font-size: 12px;
-  color: #6b7280;
+  color: var(--muted-foreground);
   display: block;
   margin-top: 2px;
 }
 
-/* CONTEÚDO METADADOS */
+/* CONTEÚDO DE METADADOS INFORMATIVOS */
 .spacing-rows {
   display: flex;
   flex-direction: column;
@@ -122,22 +151,24 @@
 }
 
 .icon-muted {
-  color: #6b7280;
+  color: var(--muted-foreground);
   font-size: 22px;
+  opacity: 0.8;
 }
 
 .info-meta-row label {
   font-size: 11px;
-  color: #6b7280;
+  color: var(--muted-foreground);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   display: block;
+  opacity: 0.8;
 }
 
 .info-meta-row p {
   font-size: 14px;
   font-weight: 500;
-  color: #1f2937;
+  color: var(--foreground);
   margin: 2px 0 0 0;
 }
 
@@ -150,13 +181,17 @@
 .details-divider {
   border: 0;
   height: 1px;
-  background: #e5e7eb;
+  background: var(--border);
   margin: 8px 0;
+}
+
+:is(.dark *) .details-divider {
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .info-description-block label {
   font-size: 12px;
-  color: #6b7280;
+  color: var(--muted-foreground);
   display: block;
   margin-bottom: 4px;
 }
@@ -164,11 +199,14 @@
 .info-description-block p {
   font-size: 14px;
   line-height: 1.5;
-  color: #4b5563;
+  color: var(--foreground);
+  opacity: 0.85;
   margin: 0;
 }
 
-/* BOTÕES DE ENTRAR / SAIR */
+/* ==========================================================================
+   BOTÕES DE INTERAÇÃO (ENTRAR / SAIR DA PARTY)
+   ========================================================================== */
 .btn-details-action-trigger {
   width: 100%;
   padding: 12px;
@@ -180,9 +218,14 @@
   justify-content: center;
   gap: 8px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s ease, transform 0.1s ease;
 }
 
+.btn-details-action-trigger:active {
+  transform: scale(0.99);
+}
+
+/* Entrar (Vermelho Neon) */
 .join-mode {
   background-color: #ff4757;
   border: none;
@@ -191,22 +234,29 @@
 
 .join-mode:hover {
   background-color: #ff6b81;
-  box-shadow: 0 4px 12px rgba(255, 71, 87, 0.2);
+  box-shadow: 0 4px 12px rgba(255, 71, 87, 0.25);
 }
 
+/* Sair (Outline) */
 .leave-mode {
   background: transparent;
-  border: 1px solid #cbd5e1;
-  color: #4b5563;
+  border: 1px solid var(--border);
+  color: var(--foreground);
+}
+
+:is(.dark *) .leave-mode {
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .leave-mode:hover {
-  background-color: rgba(239, 68, 68, 0.05);
+  background-color: rgba(239, 68, 68, 0.06);
   border-color: #ef4444;
   color: #ef4444;
 }
 
-/* LISTA DE PARTICIPANTES */
+/* ==========================================================================
+   LISTA DE PARTICIPANTES ATIVOS
+   ========================================================================== */
 .participants-list-stack {
   display: flex;
   flex-direction: column;
@@ -217,9 +267,15 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: #f8fafc; /* Fundo suave nos itens da lista */
+  background: var(--input-background); 
   padding: 8px 12px;
   border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+:is(.dark *) .participant-member-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.02);
 }
 
 .details-avatar-circle {
@@ -244,11 +300,11 @@
   font-size: 14px;
   font-weight: 500;
   margin: 0;
-  color: #111827;
+  color: var(--foreground);
 }
 
 .host-indicator-badge {
-  background-color: rgba(255, 71, 87, 0.1);
+  background-color: rgba(255, 71, 87, 0.12);
   color: #ff4757;
   font-size: 10px;
   padding: 2px 6px;
@@ -258,37 +314,53 @@
   margin-top: 2px;
 }
 
+:is(.dark *) .host-indicator-badge {
+  background-color: rgba(255, 71, 87, 0.2);
+  color: #ff6b81;
+}
+
 .btn-remove-member {
   background: transparent;
   border: none;
-  color: #9ca3af;
+  color: var(--muted-foreground);
   cursor: pointer;
   display: flex;
   align-items: center;
+  opacity: 0.7;
+  transition: color 0.2s, opacity 0.2s;
 }
 
 .btn-remove-member:hover {
   color: #ff4757;
+  opacity: 1;
 }
 
-/* SKELETON DE VAGA VAZIA */
+/* SKELETON DE VAGA DISPONÍVEL (TRACEJADA) */
 .slot-empty-row {
-  opacity: 0.7;
-  border: 1px dashed #cbd5e1;
+  opacity: 0.6;
+  border: 1px dashed var(--border);
   background: transparent;
 }
 
+:is(.dark *) .slot-empty-row {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
 .empty-avatar {
-  background: #e2e8f0;
+  background: var(--border);
+}
+
+:is(.dark *) .empty-avatar {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .slot-empty-text {
   font-size: 13px;
-  color: #6b7280;
+  color: var(--muted-foreground);
   margin: 0;
 }
 
-/* SOLICITAÇÕES */
+/* PAINEL DE ADVERTÊNCIA DE SOLICITAÇÕES */
 .panel-requests-alert {
   border-color: rgba(255, 71, 87, 0.4);
 }
@@ -303,9 +375,13 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: #f8fafc;
+  background: var(--input-background);
   padding: 10px;
   border-radius: 8px;
+}
+
+:is(.dark *) .request-approval-item {
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .request-approval-info {
@@ -316,7 +392,7 @@
   font-size: 14px;
   font-weight: 500;
   margin: 0;
-  color: #111827;
+  color: var(--foreground);
 }
 
 .request-approval-actions {
@@ -334,14 +410,17 @@
   justify-content: center;
   cursor: pointer;
   color: white;
+  transition: opacity 0.15s;
 }
 
-.btn-req-approve { background-color: #2ed573; }
-.btn-req-approve:hover { background-color: #26af5f; }
-.btn-req-reject { background-color: #ff4757; }
-.btn-req-reject:hover { background-color: #e0404e; }
+.btn-req-approve:hover, .btn-req-reject:hover { opacity: 0.9; }
 
-/* CHAT WORKSPACE */
+.btn-req-approve { background-color: #2ed573; }
+.btn-req-reject { background-color: #ff4757; }
+
+/* ==========================================================================
+   WORKSPACE DO CHAT INTERNO DA SALA
+   ========================================================================== */
 .chat-card-layout {
   display: flex;
   flex-direction: column;
@@ -349,15 +428,22 @@
   min-height: 500px;
 }
 
+/* Container de Rolagem Geral das Mensagens */
 .chat-messages-container-scroll {
   flex: 1;
   overflow-y: auto;
   padding-right: 8px;
   margin-bottom: 16px;
-  border: 1px solid #e5e7eb;
-  background: #f1f5f9; /* Recipiente de chat com fundo cinza suave */
+  border: 1px solid var(--border);
+  background: var(--input-background); /* Fundo sutil */
   border-radius: 8px;
   padding: 16px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+:is(.dark *) .chat-messages-container-scroll {
+  background: rgba(15, 23, 42, 0.4); /* Fundo estilo console escuro profundo */
+  border-color: rgba(255, 255, 255, 0.06);
 }
 
 .chat-messages-inner-stack {
@@ -397,36 +483,47 @@
 .chat-sender-name {
   font-size: 12px;
   font-weight: 600;
-  color: #111827;
+  color: var(--foreground);
 }
 
 .chat-msg-time {
   font-size: 11px;
-  color: #6b7280;
+  color: var(--muted-foreground);
+  opacity: 0.8;
 }
 
+/* Balão de Terceiros (Esquerda) */
 .chat-message-bubble {
-  background-color: #ffffff; /* Balão de terceiros branco */
+  background-color: var(--card); 
   padding: 10px 14px;
   border-radius: 0 12px 12px 12px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  border: 1px solid transparent;
+  transition: background-color 0.3s ease;
 }
 
+:is(.dark *) .chat-message-bubble {
+  background-color: rgba(255, 255, 255, 0.06); /* Balão escuro de alto nível */
+  border-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Seu Balão Próprio (Direita) */
 .own-msg-row .chat-message-bubble {
-  background-color: #ff4757; /* Seu balão continua vermelho vibrante */
+  background-color: #ff4757; 
   border-radius: 12px 0 12px 12px;
   box-shadow: none;
+  border: none;
 }
 
 .chat-message-bubble p {
   font-size: 14px;
   margin: 0;
   line-height: 1.4;
-  color: #374151;
+  color: var(--foreground);
 }
 
 .own-msg-row .chat-message-bubble p {
-  color: #ffffff; /* Texto branco no balão vermelho */
+  color: #ffffff; /* Continua perfeitamente branco no balão vermelho */
 }
 
 .chat-empty-state {
@@ -434,11 +531,11 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: #6b7280;
+  color: var(--muted-foreground);
   font-size: 14px;
 }
 
-/* FOOTER DO CHAT */
+/* FOOTER INPUT DO CHAT */
 .chat-footer-form-box {
   margin-top: auto;
 }
@@ -450,20 +547,31 @@
 
 .chat-native-input {
   flex: 1;
-  background-color: #ffffff;
-  border: 1px solid #cbd5e1;
+  background-color: var(--card);
+  border: 1px solid var(--border);
   border-radius: 8px;
   padding: 12px 16px;
-  color: #1f2937;
+  color: var(--foreground);
   font-size: 14px;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, background-color 0.3s ease;
+}
+
+:is(.dark *) .chat-native-input {
+  border-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(15, 23, 42, 0.3);
 }
 
 .chat-native-input:focus {
   border-color: #ff4757;
 }
 
+:is(.dark *) .chat-native-input:focus {
+  border-color: #ff4757;
+  box-shadow: 0 0 0 2px rgba(255, 71, 87, 0.15);
+}
+
+/* BOTÃO DE ENVIAR MENSAGEM */
 .btn-chat-send {
   background-color: #ff4757;
   color: white;
@@ -475,7 +583,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, opacity 0.2s;
 }
 
 .btn-chat-send:hover:not(:disabled) {
@@ -483,20 +591,27 @@
 }
 
 .btn-chat-send:disabled {
-  opacity: 0.4;
+  opacity: 0.35;
   cursor: not-allowed;
 }
 
+/* MENSAGEM DE CHAT TRANCADO */
 .chat-locked-warning {
-  background: #f8fafc;
-  border: 1px dashed #e5e7eb;
+  background: var(--input-background);
+  border: 1px dashed var(--border);
   padding: 12px;
   border-radius: 8px;
   text-align: center;
   font-size: 13px;
-  color: #6b7280;
+  color: var(--muted-foreground);
 }
 
+:is(.dark *) .chat-locked-warning {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* TELA DE NOT FOUND / ERRO */
 .party-details-empty-screen {
   min-height: 80vh;
   display: flex;
@@ -513,4 +628,9 @@
   padding: 10px 20px;
   border-radius: 6px;
   cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-details-back-fallback:hover {
+  opacity: 0.9;
 }

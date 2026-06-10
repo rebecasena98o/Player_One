@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import AppRoutes from './routes/PlayerOneAppRoutes';
+import SearchBar from './components/SearchBar';
 
-// Componente auxiliar para escutar a rota atual e decidir se exibe o Header
-function MainLayout({ isDark, toggleDarkMode }) {
+// Componente auxiliar global que monta a estrutura da página
+function MainLayout({ isDark, toggleDarkMode, searchQuery, setSearchQuery }) {
   const location = useLocation();
   
-  // Lista de rotas onde o Header NÃO deve aparecer de jeito nenhum
+  // Lista de rotas onde o Header e Footer NÃO devem aparecer
   const noHeaderRoutes = ['/', '/cadastro'];
   const showHeader = !noHeaderRoutes.includes(location.pathname);
 
@@ -17,18 +18,28 @@ function MainLayout({ isDark, toggleDarkMode }) {
         <Header 
           toggleDarkMode={toggleDarkMode} 
           isDark={isDark} 
-          showSearch={location.pathname === '/home'} // Só mostra a barra de pesquisa na Home
+          searchQuery={searchQuery}      /* 🌟 Passa o texto para o Header global */
+          setSearchQuery={setSearchQuery} /* 🌟 Passa a função para o Header global */
+          showSearch={location.pathname === '/home'} 
         />
       )}
       
       <main className="main-content">
-        <AppRoutes /> 
+        {/* 🌟 Passamos o termo de busca para dentro das rotas filtrarem as páginas */}
+        <AppRoutes searchQuery={searchQuery} /> 
       </main>
+
+      {showHeader && (
+        <footer className="main-footer" style={{ textAlign: 'center', padding: '20px 0', opacity: 0.7 }}>
+          <p>© 2026 PLAYER ONE - Sistema de Gestão de Ludoteca UNIFOR</p>
+        </footer>
+      )}
     </div>
   );
 }
 
 function App() {
+  const [searchQuery, setSearchQuery] = useState(''); // 🌟 Estado da busca centralizado globalmente
   const [isDark, setIsDark] = useState(() => {
     const savedTheme = localStorage.getItem('theme');
     return savedTheme === 'dark';
@@ -51,8 +62,12 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* Movemos a estrutura para o MainLayout para poder usar o useLocation() com segurança */}
-      <MainLayout isDark={isDark} toggleDarkMode={toggleDarkMode} />
+      <MainLayout 
+        isDark={isDark} 
+        toggleDarkMode={toggleDarkMode} 
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
     </BrowserRouter>
   );
 }

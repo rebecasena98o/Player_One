@@ -82,7 +82,10 @@
   border-radius: var(--radius);
   border: 1px solid var(--border);
   background-color: var(--input-background);
+  
+  /* 🌟 GARANTE A LEITURA NO MODO CLARO */
   color: var(--foreground);
+  
   margin-bottom: 16px;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
@@ -203,8 +206,21 @@
   }
 }
 
-/* Suporte ao Dark Mode para páginas de autenticação */
-.dark .auth-logo-box {
+/* 🌟 SEÇÃO REFORMULADA: Suporte ao Dark Mode para páginas de autenticação */
+:is(.dark *) .auth-logo-box {
   background-color: var(--input-background);
   border-color: var(--border);
+}
+
+/* 🌟 SOLUÇÃO DO BUG: Força o texto digitado a ficar branco puro no Dark Mode */
+:is(.dark *) .auth-form-wrapper input {
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Garante o destaque de foco também no modo escuro */
+:is(.dark *) .auth-form-wrapper input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(255, 71, 87, 0.24);
 }

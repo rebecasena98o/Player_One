@@ -15,6 +15,13 @@ const Login = () => {
     navigate('/home');
   };
 
+  const handleNumericChange = (setValue) => (e) => {
+  const value = e.target.value;
+  // O regex /\D/g significa: "Tudo o que NÃO for dígito numérico, substitua por vazio"
+  const onlyNumbers = value.replace(/\D/g, ''); 
+  setValue(onlyNumbers);
+};
+
 
   return (
     <div className="auth-page-body">
@@ -30,18 +37,20 @@ const Login = () => {
           <label>Matrícula</label>
           <input 
             type="text" 
+            inputMode="numeric"
             placeholder="Digite sua matrícula" 
             value={matricula} 
-            onChange={(e) => setMatricula(e.target.value)} 
+            onChange={handleNumericChange(setMatricula)} 
             required 
           />
           
           <label>Senha</label>
           <input 
             type="password" 
+            inputMode="numeric"
             placeholder="Digite sua senha" 
             value={senha} 
-            onChange={(e) => setSenha(e.target.value)} 
+            onChange={handleNumericChange(setSenha)} 
             required 
           />
           

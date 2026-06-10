@@ -104,7 +104,7 @@
 }
 
 :is(.dark *) .info-block-icon {
-  background-color: rgba(255, 255, 255, 0.04);
+  background-color: rgb(255, 255, 255);
   color: var(--foreground);
 }
 

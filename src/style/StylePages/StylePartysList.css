@@ -175,6 +175,28 @@
   transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
+/* 🌟 CORREÇÃO INTERATIVA: Força contraste total no Modo Escuro */
+:is(.dark *) .party-slots-badge {
+  /* Fundo grafite ligeiramente iluminado para se descolar do fundo do card */
+  background-color: rgba(255, 255, 255, 0.07) !important; 
+  
+  /* Borda sutil que desenha o formato arredondado na escuridão */
+  border-color: rgba(255, 255, 255, 0.18) !important; 
+  
+  /* Texto em branco puro para leitura imediata */
+  color: #ffffff !important; 
+}
+
+/* Garante que o ícone de pessoinhas acompanhe a cor clara do texto */
+.badge-icon {
+  font-size: 1.1rem !important;
+  color: var(--muted-foreground);
+}
+
+:is(.dark *) .badge-icon {
+  color: rgba(255, 255, 255, 0.8) !important; /* Ícone visível e nítido */
+}
+
 .badge-icon {
   font-size: 1.1rem !important;
   color: var(--muted-foreground);
@@ -221,39 +243,31 @@
 /* BOTÃO INTERNO DO CARD "PARTICIPAR / DETALHES" */
 .btn-party-action-detail {
   width: 100%;
-  background-color: var(--input-background); 
-  color: var(--foreground);
-  border: 1px solid var(--border);
+  
+  /* 🌟 Mudança para Vermelho para seguir a identidade visual do botão "Criar Party's" */
+  background-color: #ff4757 !important; 
+  color: #ffffff !important; /* Texto branco puro garante leitura 100% no escuro */
+  border: none;
+  
   padding: 12px;
   border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.9rem;
+  font-weight: 700; /* Texto ligeiramente mais grosso para destacar o clique */
+  font-size: 0.95rem;
   cursor: pointer;
-  transition: all 0.15s ease;
+  box-shadow: 0 4px 12px rgba(255, 71, 87, 0.2); /* Sombra suave vermelha */
+  transition: all 0.2s ease;
 }
 
 .btn-party-action-detail:hover {
-  background-color: var(--border);
+  background-color: #ff6b81 !important; /* Vermelho mais vivo ao passar o mouse */
+  box-shadow: 0 6px 16px rgba(255, 71, 87, 0.4);
+  transform: translateY(-1px);
 }
 
 .btn-party-action-detail:active {
-  transform: scale(0.99);
+  transform: scale(0.98);
 }
 
-/* EMPTY STATE */
-.parties-empty-state {
-  text-align: center;
-  padding: 60px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-}
-
-.empty-icon {
-  font-size: 3.5rem !important;
-  color: var(--muted-foreground);
-}
 
 /* ==========================================================================
    ESTADOS DE AGUARDANDO AUTORIZAÇÃO / MOMENTO DE ESPERA (MODO ESCURO FIX)
@@ -261,7 +275,7 @@
 
 /* Esmaece o card inteiro suavemente em ambos os temas sem "esbranquiçar" no dark */
 .party-card-disabled {
-  opacity: 0.55;
+  opacity: 0.65; /* Aumentado ligeiramente de 0.55 para 0.65 para melhorar a leitura dos textos do card */
   border-color: var(--border);
   background-color: var(--input-background);
   transform: none !important;
@@ -272,6 +286,32 @@
 :is(.dark *) .party-card-disabled {
   background-color: rgba(255, 255, 255, 0.02);
   border-color: rgba(255, 255, 255, 0.05);
+}
+
+/* O Botão no momento em que vira "Solicitado" ou entra em "Aguardando" */
+.btn-party-action-detail.btn-requested {
+  background-color: var(--muted) !important;
+  border-color: var(--border) !important;
+  color: var(--muted-foreground) !important;
+  cursor: not-allowed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* 🌟 CORREÇÃO DO BUG: Contraste do botão "Aguardando Autorização" no Modo Escuro */
+:is(.dark *) .btn-party-action-detail.btn-requested {
+  /* Substitui o cinza apagado anterior por um fundo cinza chumbo perceptível */
+  background-color: rgba(255, 255, 255, 0.12) !important; 
+  
+  /* Borda nítida em tom de cinza claro para desenhar o contorno do botão */
+  border: 1px solid rgba(255, 255, 255, 0.25) !important; 
+  
+  /* Texto clareado (cinza bem claro/quase branco) para garantir leitura excelente */
+  color: rgba(255, 255, 255, 0.85) !important; 
 }
 
 /* O Botão no momento em que vira "Solicitado" ou entra em "Aguardando" */

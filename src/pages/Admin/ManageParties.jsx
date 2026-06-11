@@ -4,7 +4,7 @@ import {
   ArrowLeft, Calendar, Clock, Users, MessageSquare, 
   CheckCircle2, XCircle, AlertTriangle, ShieldAlert 
 } from 'lucide-react';
-import './ManageParties.css';
+//import '../';
 
 export default function ManageParties() {
   const navigate = useNavigate();

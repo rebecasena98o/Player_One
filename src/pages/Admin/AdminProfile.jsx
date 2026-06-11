@@ -1,4 +1,5 @@
-import './AdminProfile.css';
+import { useNavigate } from 'react-router-dom';
+//import '../../style/Admin/AdminProfile';
 
 export default function AdminProfile() {
   const navigate = useNavigate();

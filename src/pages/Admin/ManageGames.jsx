@@ -1,4 +1,6 @@
-import './ManageGames.css';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+//import './ManageGames.css';
 
 export default function ManageGames() {
   const navigate = useNavigate();

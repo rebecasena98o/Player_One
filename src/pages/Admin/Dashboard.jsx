@@ -1,4 +1,7 @@
-import './Dashboard.css';
+const handleLogout = () => {
+  navigate('/');
+};
+//import './Dashboard.css';
 
 export default function AdminDashboard() {
   const navigate = useNavigate();

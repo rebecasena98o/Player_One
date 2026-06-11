@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import '../../style/StyleRegister/Auth.css';  // Apontando para o CSS exclusivo
+import '../../style/StyleRegister/Auth.css';
 import loginImg from '../../imgs/LoginImage.png';
 import iconLogo from '../../imgs/IconeDado.png';
 
@@ -12,7 +12,12 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     console.log("Tentando logar com:", matricula);
-    navigate('/home');
+    
+    if (matricula.trim().toLowerCase() === 'admin') {
+      navigate('/admin/dashboard');
+    } else {
+      navigate('/home');
+    }
   };
 
   const handleForgotPassword = (e) => {
@@ -26,7 +31,7 @@ const Login = () => {
         <form className="auth-form-wrapper" onSubmit={handleLogin}>
           <div className="auth-logo-box">
             <img src={iconLogo} alt="ÍconeDado" />
-              </div>
+          </div>
 
           <h2>Player One</h2>
           <p>Entre para acessar seu catálogo de jogos</p>
@@ -34,7 +39,7 @@ const Login = () => {
           <label>Matrícula</label>
           <input 
             type="text" 
-            placeholder="Digite sua matrícula" 
+            placeholder="Digite sua matrícula (ou 'admin')" 
             value={matricula} 
             onChange={(e) => setMatricula(e.target.value)} 
             required 
@@ -67,7 +72,6 @@ const Login = () => {
         </form>
       </div>
       
-      {/* CORRIGIDO: Agora a div da imagem está no lugar certo, paralela ao left-side */}
       <div className="auth-right-side" style={{ backgroundImage: `url(${loginImg})` }}>
         <h1>Conecte-se com jogadores</h1>
         <p>Organize partidas, descubra novos jogos e faça parte da comunidade</p>

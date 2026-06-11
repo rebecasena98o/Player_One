@@ -1,26 +1,19 @@
-// AdminRoutes.jsx
+import React from 'react';
 import { Route } from 'react-router-dom';
-import AdminDashboard from './Dashboard'; 
-import ManageGames from './ManageGames';       
-import AdminProfile from './AdminProfile';     
-import ManageUsers from './ManageUsers';       
-import ManageParties from './ManageParties';   
+
+// 🟢 CORRIGIDO: Apontando diretamente para o arquivo correspondente na pasta pages
+import AdminDashboard from '../../pages/Admin/Dashboard.jsx';
+import ManageGames from '../../pages/Admin/ManageGames.jsx';
+import ManageUsers from '../../pages/Admin/ManageUsers.jsx';
+import ManageParties from '../../pages/Admin/ManageParties.jsx';
+import AdminProfile from '../../pages/Admin/AdminProfile.jsx';
 
 export default function AdminRoutes() {
   return [
-    // Rota 1: Dashboard Central
-    <Route key="admin-dash" path="/admin/dashboard" element={<AdminDashboard />} />,
-
-    // Rota 2: Gerenciar Jogos
+    <Route key="admin-dashboard" path="/admin/dashboard" element={<AdminDashboard />} />,
     <Route key="admin-games" path="/admin/games" element={<ManageGames />} />,
-
-    // Rota 3: Perfil do Administrador
-    <Route key="admin-profile" path="/admin/profile" element={<AdminProfile />} />,
-
-    // Rota 4: Gerenciar Usuários
     <Route key="admin-users" path="/admin/users" element={<ManageUsers />} />,
-
-    // Rota 5: Gerenciar Party's
-    <Route key="admin-parties" path="/admin/parties" element={<ManageParties />} />
+    <Route key="admin-parties" path="/admin/parties" element={<ManageParties />} />,
+    <Route key="admin-profile" path="/admin/profile" element={<AdminProfile />} />
   ];
 }
